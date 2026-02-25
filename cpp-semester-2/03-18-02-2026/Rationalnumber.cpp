@@ -1,17 +1,14 @@
 #include "Rationalnumber.h"
-#include<numeric>
+#include <numeric>
 
-using namespace FractionExctesion;
+using namespace FractionExtension;
 
-std::string Fraction::toString()const
-{
+std::string Fraction::toString() const {
     return std::to_string(numerator) + "/" + std::to_string(denominator);
 }
 
 
-
-unsigned int Fraction::gcd(int a, int b)
-{
+unsigned int Fraction::gcd(int a, int b) {
     unsigned x = abs(a);
     unsigned y = abs(b);
 
@@ -19,13 +16,11 @@ unsigned int Fraction::gcd(int a, int b)
         return x;
     }
     if (x == 0) {
-
         return y;
     }
 
     int r1 = x % y;
-    while (r1 != 0)
-    {
+    while (r1 != 0) {
         x = y;
         y = r1;
         r1 = x % y;
@@ -33,8 +28,7 @@ unsigned int Fraction::gcd(int a, int b)
     return y;
 }
 
-void Fraction::reduce()
-{
+void Fraction::reduce() {
     unsigned g = gcd(numerator, denominator);
 
     if (g == 1) {
@@ -43,15 +37,14 @@ void Fraction::reduce()
 
     numerator /= g;
     denominator /= g;
-
 }
-void FractionExctesion::Fraction::addWith(Fraction& const other)
-{
+
+void FractionExtension::Fraction::addWith(Fraction & other) {
     numerator = numerator * other.denominator + other.numerator * denominator;
     denominator *= other.denominator;
 }
-Fraction::Fraction(int numerator, unsigned denominator)
-{
+
+Fraction::Fraction(int numerator, unsigned denominator) {
     if (denominator == 0) {
         throw std::invalid_argument("denominator can't be zero ");
     }
