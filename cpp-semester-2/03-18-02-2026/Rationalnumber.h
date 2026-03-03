@@ -1,23 +1,23 @@
 #pragma once
+
 #include <string>
-#include <numeric>
 
-namespace FractionExtension {
-    class fraction {
-    public:
-        fraction(int numerator, int denominator);
+class FractionClass
+{
+public:
+    FractionClass(int numerator, int denominator);
 
-        static void reduce(int neminator, int denominator);
+    FractionClass operator+(const FractionClass& other) const;
 
-        std::string toString() const;
+    void addWith(const FractionClass& other);
 
-        static void add(const fraction &lhs, const fraction &rhs);
+    static FractionClass add(const FractionClass& lhs, const FractionClass& rhs);
 
-    private:
-        int numerator{1};
-        int denominator{1};
+    [[nodiscard]] std::string toString() const;
 
+private:
+    int numerator{1};
+    int denominator{1};
 
-
-    };
-}
+    static void reduce(int& numerator, int& denominator);
+};
