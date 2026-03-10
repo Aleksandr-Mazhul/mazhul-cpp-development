@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../Timer.cpp"
+#include "Timer.cpp"
 
 int main()
 {
