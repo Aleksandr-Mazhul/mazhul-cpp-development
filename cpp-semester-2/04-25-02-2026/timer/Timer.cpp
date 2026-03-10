@@ -1,12 +1,17 @@
-#include "Timer.h"
+#include "../Timer.h"
 #include <stdexcept>
+#include <iostream>
 
-Timer::Timer(int seconds)
+Timer::Timer():Timer(9) {
+
+}
+
+Timer::Timer(int seconds): remainingSeconds(seconds)
 {
     if (seconds < 0)
         throw std::invalid_argument("Time cannot be negative");
 
-    remainingSeconds = seconds;
+
 }
 
 void Timer::tick()
@@ -15,12 +20,21 @@ void Timer::tick()
         --remainingSeconds;
 }
 
-void Timer::reset(int seconds)
+void Timer::set(int seconds)
 {
     if (seconds < 0)
         throw std::invalid_argument("Time cannot be negative");
 
     remainingSeconds = seconds;
+}
+
+void Timer::start() {
+    while (!isExpired())
+    {
+        std::cout << "Remaining: "
+                  << getRemaining() << "\n";
+        tick();
+    }
 }
 
 bool Timer::isExpired() const
