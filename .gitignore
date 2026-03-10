@@ -981,6 +981,9 @@ _deps
 *.exe
 *.out
 *.app
+# macOS default compiled binary name
+main
+**/main
 
 # C/C++ binary extension file
 *.bin
