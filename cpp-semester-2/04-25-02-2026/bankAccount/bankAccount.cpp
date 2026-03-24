@@ -1,21 +1,23 @@
 #include "BankAccount.h"
-
+#include <ostream>
 #include <cmath>
 #include <stdexcept>
 
 using namespace std;
 
-int BankAccount::cont = 0;
+int BankAccount::count = 0;
 
 BankAccount::BankAccount(const std::string& ownerName, double initialDeposit)
     : ownerName(ownerName)
     , balance(initialDeposit)
     ,history{}
+    ,accountNumber(generateAccountNumber(ownerName))
 {
     ValidateEmptyString(ownerName, "BankAccount cant be empty");
     validateAmountPositive(initialDeposit, "Initial deposit cannot be negative");
 
-    cont++;
+    count++;
+
 }
 
 BankAccount::BankAccount(const std::string& ownerName)
@@ -25,12 +27,17 @@ BankAccount::BankAccount(const std::string& ownerName)
 
 int BankAccount::getAccountCount()
 {
-    return cont;
+    return count;
 }
 
 const std::string& BankAccount::getOwnerName() const
 {
     return ownerName;
+}
+
+const std::string& BankAccount::getAccountNumber() const
+{
+    return accountNumber;
 }
 
 void BankAccount::deposit(double amount)
@@ -122,6 +129,11 @@ const Operation* BankAccount::getOperation(size_t i) const
     return &history[i];
 }
 
+std::string BankAccount::generateAccountNumber(std::string accountNumber)
+{
+    return accountNumber.substr(0, 3) + to_string(BankId + count);
+}
+
 void BankAccount::ValidateEmptyString(const string& name, const string& message)
 {
     if (name.empty())
@@ -145,3 +157,29 @@ void BankAccount::isAmountInfinite(double amount, const string& message)
         throw invalid_argument(message);
     }
 }
+
+
+
+std::ostream& operator << (std::ostream& os, const BankAccount& account)
+{
+    return os <<  "[#"  << account.getAccountNumber() << ", " << account.getOwnerName()<< ", " << account.getBalance()<< "$" << "]" <<endl;
+}
+
+
+std::ostream& operator << (std::ostream& os, const OperationType& operation)
+{
+    switch (operation)
+    {
+        case OperationType::Deposit: os << "Deposit"; break;
+        case OperationType::Withdraw: os << "Withdraw"; break;
+        case OperationType::TransferOut: os << "TransferOut"; break;
+        case OperationType::TransferIn: os << "TransferIn"; break;
+    }
+    return os;
+}
+
+std::ostream& operator << (std::ostream& os, const Operation& operation)
+{
+    return os <<  "OperationType: "  << operation.type << ", amount" << operation.amount<< ", date" << operation.date <<endl;
+}
+

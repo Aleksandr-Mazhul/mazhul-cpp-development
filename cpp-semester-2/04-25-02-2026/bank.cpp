@@ -25,7 +25,7 @@ class BankAccount
     {
         ValidateEmptyString(ownerName, "BankAccount cant be empty");
 
-        validateAmountPositive(initialDeposit, "BankAccount cont be negative");
+        validateAmountPositive(initialDeposit, "BankAccount count be negative");
     }
 
     /**
@@ -68,7 +68,7 @@ class BankAccount
     void deposit(double amount)
     {
         (void)amount;
-        validateAmountPositive(amount, "amount cont be negative");
+        validateAmountPositive(amount, "amount count be negative");
 
         isAmountFinite(amount, "Cant be infinite");
         this->balance += amount;
@@ -89,7 +89,7 @@ class BankAccount
         {
             throw std::invalid_argument("BankAccountStub::withdraw: Not implemented");
         }
-        validateAmountPositive(amount, "amount cont be negative");
+        validateAmountPositive(amount, "amount count be negative");
 
         isAmountFinite(amount, "Cant be infinite");
 
@@ -112,7 +112,7 @@ class BankAccount
         if (this == &targetAccount)
         {
             throw std::logic_error("BankAccountStub::transfer");
-            chalidateAmountPositive(amount, "amount cont be negative");
+            chalidateAmountPositive(amount, "amount count be negative");
             isAmountFinite(amount, "Cant be infinite");
         }
         this->withdraw(amount);
@@ -139,7 +139,7 @@ class BankAccount
   private:
     std::string ownerName;
     double balance;
-    static int cont;
+    static int count;
 
     inline static void ValidateEmptyString(const string& name, const string& message)
     {
@@ -166,7 +166,7 @@ class BankAccount
     }
 };
 
-int BankAccount::cont = 0;
+int BankAccount::count = 0;
 
 int main()
 {

@@ -25,6 +25,11 @@ int main()
         BankAccount acc1("jac", num);
         BankAccount acc2("john", num);
 
+
+        cout <<acc1;
+        cout <<acc;
+        cout <<acc2;
+
         acc1.deposit(300.0);
 
         cout << acc1.getAccountCount() << endl;

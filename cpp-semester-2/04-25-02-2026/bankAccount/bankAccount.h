@@ -67,6 +67,8 @@ public:
      */
     const std::string& getOwnerName() const;
 
+    const std::string& getAccountNumber() const;
+
     /**
      * Deposit money to the account.
      */
@@ -94,8 +96,13 @@ private:
     /** Current balance of the account */
     double balance;
 
+    std::string accountNumber;
+
     /** Total number of BankAccount objects that have been created */
-    static int cont;
+    static int count;
+
+    const static  long BankId = 4'000;
+
 
     /** Maximum number of operations stored in the account history */
     static constexpr size_t maxOperations = 100;
@@ -129,6 +136,8 @@ private:
      */
     const Operation* getOperation(size_t i) const;
 
+
+    static std::string generateAccountNumber(std::string accountNumber);
     /**
      * Validates that a string is not empty.
      * @param name string to validate
