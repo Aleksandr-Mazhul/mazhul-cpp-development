@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const size_t Size = 10;
+constexpr size_t Size = 10;
 
 using PredicatePointer = bool (*)(int);
 using IntegerArray = array<int, Size>;
@@ -102,7 +102,7 @@ class RangePredicate
     int down, up;
 };
 
-int main()ќ
+int main()
 {
     IntegerArray numbers{2, 3, 4, -5, 60, 12, -87, 2, 2, 3};
     int value = 2;
@@ -125,7 +125,7 @@ int main()ќ
     p = p1;
     cout << p(56) << endl;
     p = NegativePredicate();*/
-    std::array<Predicate, 68> functors{
+    std::array<Predicate, 13> functors{
         NegativePredicate(),
         PositivePredicate(),
         OddPredicate(),
@@ -139,7 +139,6 @@ int main()ќ
         RangePredicate(1, 12),
         [](int x) { return x > 0; },
         [value](int x) { return x == value; },
-
     };
     for (size_t i = 0; i < functors.size(); i++)
     {
@@ -192,6 +191,7 @@ void filterOnlyOdd(const IntegerArray& numbers)
     }
 }
 
+
 void filterByPredicate(const IntegerArray& numbers, PredicatePointer predicate)
 {
     for (size_t i = 0; i < numbers.size(); i++)
@@ -213,6 +213,11 @@ void filterByPredicate(const IntegerArray& numbers, Predicate predicate)
         }
     }
 }
+
+
+
+
+
 
 bool isPositive(int x)
 {

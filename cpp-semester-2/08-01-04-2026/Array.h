@@ -1,14 +1,25 @@
+#pragma once
+#include <iostream>
+
+using namespace std;
+
+class Array
+{
+  public:
+    Array();
+
+    void add(int element);
+
+    int* getSource() const;
+    int getLength() const;
 
 
-#ifndef MAZHUL_CPP_DEVELOPMENT_ARRAY_H
-#define MAZHUL_CPP_DEVELOPMENT_ARRAY_H
 
-
-
-class Array {
-
+  private:
+    int* source;
+    size_t capacity{4}; // текущая емкость массива, начинается с дефолтного значения 4
+    size_t growFactor{2};
+    size_t length{1};
 };
 
-
-
-#endif //MAZHUL_CPP_DEVELOPMENT_ARRAY_H
+std::ostream& operator<<(std::ostream& os, const Array& aray);
