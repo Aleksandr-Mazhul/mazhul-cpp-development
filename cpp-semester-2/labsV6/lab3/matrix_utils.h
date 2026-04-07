@@ -1,0 +1,14 @@
+
+
+#ifndef MAZHUL_CPP_DEVELOPMENT_MATRIX_UTILS_H
+#define MAZHUL_CPP_DEVELOPMENT_MATRIX_UTILS_H
+
+
+
+class matrix_utils {
+
+};
+
+
+
+#endif //MAZHUL_CPP_DEVELOPMENT_MATRIX_UTILS_H

@@ -1,0 +1,14 @@
+
+
+#ifndef MAZHUL_CPP_DEVELOPMENT_ARRAY_H
+#define MAZHUL_CPP_DEVELOPMENT_ARRAY_H
+
+
+
+class Array {
+
+};
+
+
+
+#endif //MAZHUL_CPP_DEVELOPMENT_ARRAY_H
