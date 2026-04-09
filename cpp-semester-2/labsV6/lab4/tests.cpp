@@ -11,6 +11,7 @@ void testSortByPositive()
 {
     int rows = 3;
 
+
     int* lengths = new int[rows]{3, 1, 2};
     int** matrix = new int*[rows];
 

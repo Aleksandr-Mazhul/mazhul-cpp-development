@@ -1,7 +1,7 @@
 #include <functional>
 #include <iostream>
 
-// using FunctionKey = std::function<int(int)>;
+//using FunctionKey = std::function<int(int)>;
 
 int keyAbs(int x);
 int keyDigitCount(int x);
@@ -9,22 +9,26 @@ int keySumOfDigits(int x);
 int keyLastDigit(int x);
 int keyModulo(int x, int n);
 
-template <typename T, size_t left, size_t right> void display(const T* arr);
+
+
+
+template <typename T, size_t left, size_t right>
+void display(const T* arr);
 // void bubbleSort(int* const arr, int left, int right, bool order);
 
 template <typename T, typename U, typename FunctionKey>
-void bubbleSort(T* const arr, int left, int right, FunctionKey key);
+void bubbleSort(T* arr, int left, int right, FunctionKey key);
 
 // todo
 //  template<typename T, typename U>
 //  void bubbleSort(T* const arr, int left, int right, U* key);
 
-void bubbleSortByValueAsc(int* const arr, int left, int right);
-void bubbleSortByValueDesc(int* const arr, int left, int right);
-void bubbleSortByAbs(int* const arr, int left, int right);
-void bubbleSortByDigitCount(int* const arr, int left, int right);
-void bubbleSortBySumOfDigits(int* const arr, int left, int right);
-void bubbleSortByLastDigit(int* const arr, int left, int right);
+void bubbleSortByValueAsc(int* arr, int left, int right);
+void bubbleSortByValueDesc(int* arr, int left, int right);
+void bubbleSortByAbs(int* arr, int left, int right);
+void bubbleSortByDigitCount(int* arr, int left, int right);
+void bubbleSortBySumOfDigits(int* arr, int left, int right);
+void bubbleSortByLastDigit(int* arr, int left, int right);
 
 int main()
 {

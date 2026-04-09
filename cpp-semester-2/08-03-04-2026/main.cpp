@@ -1,24 +1,21 @@
-#include <iostream>
 #include <functional>
+#include <iostream>
 
-//using FunctionKey = std::function<int(int)>;
+// using FunctionKey = std::function<int(int)>;
 
 // template<typename T>
 // std::function<bool(T, T)>
-template<typename T>
+template <typename T>
 using Comparer = std::function<bool(T, T)>;
 
-/////-----------
-template<typename TIn, typename TOut>
-using Convertor = std::function<TOut(TIn)>;
+template <typename TIn, typename TOut>
+using Converter = std::function<TOut(TOut, TIn)>;
 
-template<typename T>
-using Array = std::function<bool(T, 10)>;
+template <typename T>
+using Array = std::array<T, 10>;
 
-template<typename T>
-Convertor<>
-
-////-------------------
+template <typename TIn, typename TOut>
+Array<TOut> convert(Array<TIn> source, const Converter<TIn, TOut>& converter);
 
 int keyAbs(int x);
 int keyDigitCount(int x);
@@ -26,94 +23,131 @@ int keySumOfDigits(int x);
 int keyLastDigit(int x);
 int keyModulo(int x, int n);
 
-template<typename T, size_t left, size_t right>
+template <typename T, size_t left, size_t right>
 void display(const T* arr);
-//void bubbleSort(int* const arr, int left, int right, bool order);
+// void bubbleSort(int* const arr, int left, int right, bool order);
 
-template<typename T, typename U, typename FunctionKey>
-void bubbleSort(T* const arr, int left, int right, FunctionKey key);
+template <typename T, typename U, typename FunctionKey>
+void bubbleSort(T* arr, int left, int right, const FunctionKey& key);
 
-template<typename T>
-void bubbleSort(T* const arr, int left, int right, Comparer<T> comprer);
+template <typename T>
+void bubbleSort(T* arr, int left, int right, const Comparer<T>& comparer);
 
-//todo
-// template<typename T, typename U>
-// void bubbleSort(T* const arr, int left, int right, U* key);
+// todo
+//  template<typename T, typename U>
+//  void bubbleSort(T* const arr, int left, int right, U* key);
 
-void bubbleSortByValueAsc(int* const arr, int left, int right);
-void bubbleSortByValueDesc(int* const arr, int left, int right);
-void bubbleSortByAbs(int* const arr, int left, int right);
-void bubbleSortByDigitCount(int* const arr, int left, int right);
-void bubbleSortBySumOfDigits(int* const arr, int left, int right);
-void bubbleSortByLastDigit(int* const arr, int left, int right);
+void bubbleSortByValueAsc(int* arr, int left, int right);
+void bubbleSortByValueDesc(int* arr, int left, int right);
+void bubbleSortByAbs(int* arr, int left, int right);
+void bubbleSortByDigitCount(int* arr, int left, int right);
+void bubbleSortBySumOfDigits(int* arr, int left, int right);
+void bubbleSortByLastDigit(int* arr, int left, int right);
 
-int main() {
-    constexpr int data[] = { -34, 70, 12, -3, 50, 51, -100, 42, 98 };
+int main()
+{
+    constexpr int data[] = {-34, 70, 12, -3, 50, 51, -100, 42, 98};
     constexpr int n = sizeof data / sizeof data[0];
 
     int array[n];
 
-    auto copyFromData = [&]() {
+    auto copyFromData = [&]()
+    {
         for (int i = 0; i < n; i++)
             array[i] = data[i];
     };
+    Array<int> arr;
+    Array<std::string> convertedArr =
+        convert<int, std::string>(arr, [](const std::string&, int x) { return std::to_string(x); });
+
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << convertedArr[i] << " ";
+    }
+    std::cout << std::endl;
+
+
+
+    Array<std::string> convertedArr1 = convert<int, std::string>(
+        arr, [](const std::string&, int x) { return std::to_string(x * 2) + ' '; });
+
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << convertedArr1[i] << " ";
+    }
+    std::cout << std::endl;
+
+
+    Array<bool> checker = convert<int, bool>(arr, [](bool, int x) { return x > 0; });
+    for (int i = 0; i < n; i++)
+    {
+        std::cout << checker[i] << " ";
+    }
+    std::cout << std::endl;
+
 
     copyFromData();
-    bubbleSort<int, int, int (*) (int)>(array, 0, n - 1, keyAbs);
-    display<int,0,n-1>(array);
+    bubbleSort<int, int, int (*)(int)>(array, 0, n - 1, keyAbs);
+    display<int, 0, n - 1>(array);
 
     copyFromData();
     int l{4};
-    bubbleSort<int, int, std::function<int(int)>>(array, 0, n - 1, [l](int x) { return ((x % l) + l) % l; });
-    display<int,0,n-1>(array);
+    bubbleSort<int, int, std::function<int(int)>>(
+        array, 0, n - 1, [l](int x) { return ((x % l) + l) % l; });
+    display<int, 0, n - 1>(array);
 
     copyFromData();
     std::cout << "Using comparer:" << std::endl;
-    bubbleSort<int>(array, 0, n - 1, [](int x, int y){return abs(x) < abs(y);});
-    display<int,0,n-1>(array);
+    bubbleSort<int>(array, 0, n - 1, [](int x, int y) { return abs(x) < abs(y); });
+    display<int, 0, n - 1>(array);
 
     copyFromData();
     std::cout << "Using comparer:" << std::endl;
-    bubbleSort<int>(array, 0, n - 1, [](int x, int y){return abs(x) > abs(y);});
-    display<int,0,n-1>(array);
+    bubbleSort<int>(array, 0, n - 1, [](int x, int y) { return abs(x) > abs(y); });
+    display<int, 0, n - 1>(array);
 
     copyFromData();
     std::cout << "Using comparer:" << std::endl;
-    bubbleSort<int>(array, 0, n - 1, [](int x, int y){return std::to_string(x)[1] < std::to_string(y)[1];});
-    display<int,0,n-1>(array);
+    bubbleSort<int>(
+        array, 0, n - 1, [](int x, int y) { return std::to_string(x)[1] < std::to_string(y)[1]; });
+    display<int, 0, n - 1>(array);
 
     copyFromData();
     std::cout << "Using std::sort:" << std::endl;
-    std::sort(array, array + n, [](int x, int y){return std::to_string(x)[1] > std::to_string(y)[1];});
-    display<int, 0, n-1>(array);
+    std::sort(
+        array, array + n, [](int x, int y) { return std::to_string(x)[1] > std::to_string(y)[1]; });
+    display<int, 0, n - 1>(array);
     //-----------------------------
 
-    constexpr double data1[] = { -34.5, 7.34, 12.2, -3.12, 0, 5, -100, 42, 9.1234 };
+    constexpr double data1[] = {-34.5, 7.34, 12.2, -3.12, 0, 5, -100, 42, 9.1234};
     constexpr int n1 = sizeof data1 / sizeof data1[0];
 
     double array1[n1];
 
-    auto copyFromData1 = [&]() {
+    auto copyFromData1 = [&]()
+    {
         for (int i = 0; i < n1; i++)
             array1[i] = data1[i];
     };
 
     copyFromData1();
-    bubbleSort<double,char, std::function<char(double)>>(array1, 0, n1 - 1, [](double x){return std::to_string(x)[0];});
-    display<double, 0,n1 - 1>(array1);
+    bubbleSort<double, char, std::function<char(double)>>(
+        array1, 0, n1 - 1, [](double x) { return std::to_string(x)[0]; });
+    display<double, 0, n1 - 1>(array1);
 
     copyFromData1();
-    bubbleSort<double,std::string, std::function<std::string(double)>>(array1, 0, n1 - 1, [](double x){return std::to_string(x) + "$";});
-    display<double, 0,n1 - 1>(array1);
+    bubbleSort<double, std::string, std::function<std::string(double)>>(
+        array1, 0, n1 - 1, [](double x) { return std::to_string(x) + "$"; });
+    display<double, 0, n1 - 1>(array1);
 
     copyFromData1();
     std::cout << "Using std::sort:" << std::endl;
     std::sort(array1, array1 + n1);
-    display<double, 0, n1-1>(array1);
+    display<double, 0, n1 - 1>(array1);
     return 0;
 }
 
-template<typename T, size_t left, size_t right>
+template <typename T, size_t left, size_t right>
 void display(const T* arr)
 {
     for (int i = left; i <= right; ++i)
@@ -123,14 +157,22 @@ void display(const T* arr)
 
 // --- Вспомогательные функции для ключей сортировки ---
 
-int keyAbs(int x) { return std::abs(x); }
+int keyAbs(int x)
+{
+    return std::abs(x);
+}
 
 int keyDigitCount(int x)
 {
-    if (x == 0) return 1;
+    if (x == 0)
+        return 1;
     int n = 0;
     int t = std::abs(x);
-    while (t) { t /= 10; ++n; }
+    while (t)
+    {
+        t /= 10;
+        ++n;
+    }
     return n;
 }
 
@@ -138,27 +180,39 @@ int keySumOfDigits(int x)
 {
     int t = std::abs(x);
     int s = 0;
-    while (t) { s += t % 10; t /= 10; }
+    while (t)
+    {
+        s += t % 10;
+        t /= 10;
+    }
     return s;
 }
 
-int keyLastDigit(int x) { return std::abs(x % 10); }
+int keyLastDigit(int x)
+{
+    return std::abs(x % 10);
+}
 
 // Остаток от деления на N (нормализованный для отрицательных)
-int keyModulo(int x, int n) { return ((x % n) + n) % n; }
+int keyModulo(int x, int n)
+{
+    return ((x % n) + n) % n;
+}
 
 // 1. Обычная сортировка по значению (сравнение «меньше» / «больше»)
 void bubbleSort(int* const arr, int left, int right, bool order)
 {
-    for (int i{ left }; i < right; i++)
+    for (int i{left}; i < right; i++)
     {
-        for (int j{ right }; j > i; j--)
+        for (int j{right}; j > i; j--)
         {
-            if (order) {
+            if (order)
+            {
                 if (arr[j] < arr[j - 1])
                     std::swap(arr[j], arr[j - 1]);
             }
-            else {
+            else
+            {
                 if (arr[j] > arr[j - 1])
                     std::swap(arr[j], arr[j - 1]);
             }
@@ -166,40 +220,56 @@ void bubbleSort(int* const arr, int left, int right, bool order)
     }
 }
 
-// --- Много вариантов самой сортировки (критерий «зашит» в коде) — затем сворачиваются в одну с настройкой ---
+// --- Много вариантов самой сортировки (критерий «зашит» в коде) — затем сворачиваются в одну с
+// настройкой ---
 
 void bubbleSortByValueAsc(int* const arr, int left, int right)
 {
-    for (int i{ left }; i < right; i++)
-        for (int j{ right }; j > i; j--)
+    for (int i{left}; i < right; i++)
+        for (int j{right}; j > i; j--)
             if (arr[j] < arr[j - 1])
                 std::swap(arr[j], arr[j - 1]);
 }
 
-template<typename T, typename U, typename FunctionKey>
+template <typename T, typename U, typename FunctionKey>
 void bubbleSort(T* const arr, int left, int right, FunctionKey key)
 {
     int n = right - left + 1;
     U* keys = new U[n];
 
-    for (int i{ 0 }; i < n; i++) {
+    for (int i{0}; i < n; i++)
+    {
         keys[i] = key(arr[i + left]);
     }
 
-    for (int i{ 0 }; i < n; i++)
-        for (int j{ n - 1 }; j > i; j--)
-            if (keys[j] < keys[j - 1]) {
+    for (int i{0}; i < n; i++)
+        for (int j{n - 1}; j > i; j--)
+            if (keys[j] < keys[j - 1])
+            {
                 std::swap(keys[j], keys[j - 1]);
                 std::swap(arr[j + left], arr[j - 1 + left]);
             }
 
-    delete [] keys;
+    delete[] keys;
 }
 
-template<typename T>
-void bubbleSort(T* const arr, int left, int right, Comparer<T> comparer) {
-    for (int i{ left }; i < right; i++)
-        for (int j{ right }; j > i; j--)
+template <typename T>
+void bubbleSort(T* const arr, int left, int right, Comparer<T> comparer)
+{
+    for (int i{left}; i < right; i++)
+        for (int j{right}; j > i; j--)
             if (comparer(arr[j], arr[j - 1]))
                 std::swap(arr[j], arr[j - 1]);
+}
+
+template <typename TIn, typename TOut>
+Array<TOut> convert(Array<TIn> source, Converter<TIn, TOut> converter)
+{
+    Array<TOut> result{};
+
+    for (size_t i = 0; i < source.size(); i++)
+    {
+        result[i] = converter(result[i], source[i]);
+    }
+    return result;
 }

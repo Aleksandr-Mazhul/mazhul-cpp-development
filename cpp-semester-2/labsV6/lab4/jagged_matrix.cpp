@@ -76,7 +76,9 @@ int criterionPositive(const int* row, int length)
 void freeMatrix(int** matrix, const int* rowSize, int rowCount)
 {
     for (int i = 0; i < rowCount; i++)
+    {
         delete[] matrix[i];
+    }
 
     delete[] matrix;
     delete[] rowSize;
