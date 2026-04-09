@@ -1,48 +1,8 @@
-#include <functional>
+#include "sorting_utils.h"
+
+#include <algorithm>
 #include <iostream>
-
-// using FunctionKey = std::function<int(int)>;
-
-// template<typename T>
-// std::function<bool(T, T)>
-template <typename T>
-using Comparer = std::function<bool(T, T)>;
-
-template <typename TIn, typename TOut>
-using Converter = std::function<TOut(TOut, TIn)>;
-
-template <typename T>
-using Array = std::array<T, 10>;
-
-template <typename TIn, typename TOut>
-Array<TOut> convert(Array<TIn> source, const Converter<TIn, TOut>& converter);
-
-int keyAbs(int x);
-int keyDigitCount(int x);
-int keySumOfDigits(int x);
-int keyLastDigit(int x);
-int keyModulo(int x, int n);
-
-template <typename T, size_t left, size_t right>
-void display(const T* arr);
-// void bubbleSort(int* const arr, int left, int right, bool order);
-
-template <typename T, typename U, typename FunctionKey>
-void bubbleSort(T* arr, int left, int right, const FunctionKey& key);
-
-template <typename T>
-void bubbleSort(T* arr, int left, int right, const Comparer<T>& comparer);
-
-// todo
-//  template<typename T, typename U>
-//  void bubbleSort(T* const arr, int left, int right, U* key);
-
-void bubbleSortByValueAsc(int* arr, int left, int right);
-void bubbleSortByValueDesc(int* arr, int left, int right);
-void bubbleSortByAbs(int* arr, int left, int right);
-void bubbleSortByDigitCount(int* arr, int left, int right);
-void bubbleSortBySumOfDigits(int* arr, int left, int right);
-void bubbleSortByLastDigit(int* arr, int left, int right);
+#include <string>
 
 int main()
 {
@@ -56,7 +16,7 @@ int main()
         for (int i = 0; i < n; i++)
             array[i] = data[i];
     };
-    Array<int> arr;
+    Array<int> arr{};
     Array<std::string> convertedArr =
         convert<int, std::string>(arr, [](const std::string&, int x) { return std::to_string(x); });
 
@@ -98,12 +58,12 @@ int main()
 
     copyFromData();
     std::cout << "Using comparer:" << std::endl;
-    bubbleSort<int>(array, 0, n - 1, [](int x, int y) { return abs(x) < abs(y); });
+    bubbleSort<int>(array, 0, n - 1, [](int x, int y) { return std::abs(x) < std::abs(y); });
     display<int, 0, n - 1>(array);
 
     copyFromData();
     std::cout << "Using comparer:" << std::endl;
-    bubbleSort<int>(array, 0, n - 1, [](int x, int y) { return abs(x) > abs(y); });
+    bubbleSort<int>(array, 0, n - 1, [](int x, int y) { return std::abs(x) > std::abs(y); });
     display<int, 0, n - 1>(array);
 
     copyFromData();
@@ -145,131 +105,4 @@ int main()
     std::sort(array1, array1 + n1);
     display<double, 0, n1 - 1>(array1);
     return 0;
-}
-
-template <typename T, size_t left, size_t right>
-void display(const T* arr)
-{
-    for (int i = left; i <= right; ++i)
-        std::cout << arr[i] << ' ';
-    std::cout << '\n';
-}
-
-// --- Вспомогательные функции для ключей сортировки ---
-
-int keyAbs(int x)
-{
-    return std::abs(x);
-}
-
-int keyDigitCount(int x)
-{
-    if (x == 0)
-        return 1;
-    int n = 0;
-    int t = std::abs(x);
-    while (t)
-    {
-        t /= 10;
-        ++n;
-    }
-    return n;
-}
-
-int keySumOfDigits(int x)
-{
-    int t = std::abs(x);
-    int s = 0;
-    while (t)
-    {
-        s += t % 10;
-        t /= 10;
-    }
-    return s;
-}
-
-int keyLastDigit(int x)
-{
-    return std::abs(x % 10);
-}
-
-// Остаток от деления на N (нормализованный для отрицательных)
-int keyModulo(int x, int n)
-{
-    return ((x % n) + n) % n;
-}
-
-// 1. Обычная сортировка по значению (сравнение «меньше» / «больше»)
-void bubbleSort(int* const arr, int left, int right, bool order)
-{
-    for (int i{left}; i < right; i++)
-    {
-        for (int j{right}; j > i; j--)
-        {
-            if (order)
-            {
-                if (arr[j] < arr[j - 1])
-                    std::swap(arr[j], arr[j - 1]);
-            }
-            else
-            {
-                if (arr[j] > arr[j - 1])
-                    std::swap(arr[j], arr[j - 1]);
-            }
-        }
-    }
-}
-
-// --- Много вариантов самой сортировки (критерий «зашит» в коде) — затем сворачиваются в одну с
-// настройкой ---
-
-void bubbleSortByValueAsc(int* const arr, int left, int right)
-{
-    for (int i{left}; i < right; i++)
-        for (int j{right}; j > i; j--)
-            if (arr[j] < arr[j - 1])
-                std::swap(arr[j], arr[j - 1]);
-}
-
-template <typename T, typename U, typename FunctionKey>
-void bubbleSort(T* const arr, int left, int right, FunctionKey key)
-{
-    int n = right - left + 1;
-    U* keys = new U[n];
-
-    for (int i{0}; i < n; i++)
-    {
-        keys[i] = key(arr[i + left]);
-    }
-
-    for (int i{0}; i < n; i++)
-        for (int j{n - 1}; j > i; j--)
-            if (keys[j] < keys[j - 1])
-            {
-                std::swap(keys[j], keys[j - 1]);
-                std::swap(arr[j + left], arr[j - 1 + left]);
-            }
-
-    delete[] keys;
-}
-
-template <typename T>
-void bubbleSort(T* const arr, int left, int right, Comparer<T> comparer)
-{
-    for (int i{left}; i < right; i++)
-        for (int j{right}; j > i; j--)
-            if (comparer(arr[j], arr[j - 1]))
-                std::swap(arr[j], arr[j - 1]);
-}
-
-template <typename TIn, typename TOut>
-Array<TOut> convert(Array<TIn> source, Converter<TIn, TOut> converter)
-{
-    Array<TOut> result{};
-
-    for (size_t i = 0; i < source.size(); i++)
-    {
-        result[i] = converter(result[i], source[i]);
-    }
-    return result;
 }
