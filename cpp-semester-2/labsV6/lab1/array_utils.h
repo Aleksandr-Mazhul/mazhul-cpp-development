@@ -9,7 +9,7 @@ int findLastNegativeNumWithEvenPos(const double *a, int n);
 
 void reverse(double *a, size_t n, size_t start, size_t end);
 
-void cyclicTranspositionToTheLeftOnK(double *a, size_t k, int n);
+        void cyclicTranspositionToTheLeftOnK(double *a, size_t k, int n);
 
 void cyclicTranspositionToTheLeftOfThirdOfThird(double *a, size_t k, int n);
 

@@ -14,13 +14,13 @@ void swap(double &a, double &b) noexcept {
 
 void initArray(double *a, int n, double minValue, double maxValue) {
     srand(time(nullptr));
-    for (size_t i = 0; i < n; i++) {
+            for (size_t i = 0; i < n; i++) {
         double random = rand() / static_cast<double>(RAND_MAX);
         a[i] = minValue + random * (maxValue - minValue);
     }
 }
 
-void printArray(const double *a, int n) {
+    void printArray(const double *a, int n) {
     for (int i = 0; i < n; i++) {
         cout << a[i] << " ";
     }
