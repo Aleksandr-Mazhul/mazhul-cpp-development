@@ -17,22 +17,25 @@ Pizza::Builder& Pizza::Builder::setSauce(const std::string& sauce)
     pizza.sauce = sauce;
     return *this;
 }
-s
-Pizza::Builder& Pizza::Builder::addTopping(const std::string& topping)
+
+s Pizza::Builder& Pizza::Builder::addTopping(const std::string& topping)
 {
     pizza.toppings.push_back(topping);
     return *this;
-}soch
+}
 
-Pizza Pizza::Builder::build()
+soch
+
+
+    Pizza::Builder::build()
 {
     return pizza;
 }
 
-functor::Pizza::Builder& functor::Pizza::Builder::setDough(const std::string& dough)
-   std::ostream& operator<<(std::ostream& os, const Pizza& pizza)
+functor::Pizza::Builder& functor::Pizza::Builder::setDough(const std::string& dough) std::ostream&
+operator<<(std::ostream& os, const Pizza& pizza)
 {
-         os << "Pizza: size-" << pizza.size << ", dough-" << pizza.dough << ", sauce-" << pizza.sauce;
+    os << "Pizza: size-" << pizza.size << ", dough-" << pizza.dough << ", sauce-" << pizza.sauce;
 
     for (size_t i = 0; i < pizza.toppings.size(); ++i)
     {
@@ -40,3 +43,5 @@ functor::Pizza::Builder& functor::Pizza::Builder::setDough(const std::string& do
     }
     return os;
 }
+
+ффф
