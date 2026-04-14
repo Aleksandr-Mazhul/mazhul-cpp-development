@@ -29,4 +29,3 @@ class Pizza
   private:
     Pizza pizza;
 };
-^^^
