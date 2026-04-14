@@ -14,7 +14,7 @@ void displayArray(int *array, size_t n);
 string getTypeOfSequence(const int *array, size_t n);
 
 int main() {
-    const size_t n = 5;
+        const size_t n = 5;
     int array[n] = {1, 2, 3, 4, 5};
     cout << "Sequence ";
     displayArray(array, n);

@@ -1,10 +1,12 @@
+#include "Order.h"
 #include "Pizza.h"
 
 #include <iostream>
 
 int main()
 {
-    auto pizza1 = Pizza::Builder().setSize("small").build();
+    auto pizza1 = Pizza::Builder().setSize("small")
+                                  .build();
     std::cout << pizza1 << std::endl;
     auto pizza2 = Pizza::Builder()
                       .setSize("large")
@@ -17,6 +19,13 @@ int main()
 
     std::cout << pizza2 << std::endl;
 
-    auto pizza3 = Pizza::Builder().setSize("medium").addTopping("mozzarella").build();
+    auto pizza3 = Pizza::Builder().setSize("medium")
+                                  .addTopping("mozzarella")
+                                  .build();
     std::cout << pizza3 << std::endl;
+
+
+    Order order(1, "Alex");
+    order.addPizza(pizza1);
+    std::cout << order;
 }

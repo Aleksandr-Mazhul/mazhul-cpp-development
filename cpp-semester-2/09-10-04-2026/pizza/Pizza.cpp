@@ -1,5 +1,18 @@
 #include "Pizza.h"
 
+int Pizza::getPrice() const
+{
+    int price = 0;
+
+    if (size == "small") price = 300;
+    if (size == "medium") price = 500;
+    if (size == "large") price = 700;
+
+    price += toppings.size() * 50;
+
+    return price;
+}
+
 Pizza::Builder& Pizza::Builder::setSize(const std::string& size)
 {
     pizza.size = size;
@@ -37,5 +50,7 @@ std::ostream& operator<<(std::ostream& os, const Pizza& pizza)
     {
         os << (i == 0 ? ", toppings-" : ", ") << pizza.toppings[i];
     }
+
+    os << "pizza consts: " << pizza.getPrice() << " rubles";
     return os;
 }

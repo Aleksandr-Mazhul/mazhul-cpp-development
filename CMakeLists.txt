@@ -7,3 +7,4 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Independent projects are connected as separate subdirectories.
 add_subdirectory(cpp-semester-2/09-10-04-2026/pizza)
+
