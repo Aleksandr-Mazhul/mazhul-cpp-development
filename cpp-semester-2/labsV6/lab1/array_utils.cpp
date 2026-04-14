@@ -91,7 +91,7 @@ void selectionSort(double *a, size_t n, size_t start, size_t end) {
 
 inline void sortBySelectingElementsWithOddIndex(double *a, int n) {
     for (size_t i{1}; i < n; i += 2) {
-        size_t minIndex = i;
+            size_t minIndex = i;
         for (size_t j{i + 2}; j < n; j += 2) {
             if (a[j] < a[minIndex]) {
                 minIndex = j;

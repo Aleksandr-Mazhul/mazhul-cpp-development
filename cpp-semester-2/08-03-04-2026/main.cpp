@@ -27,7 +27,6 @@ int main()
     std::cout << std::endl;
 
 
-
     Array<std::string> convertedArr1 = convert<int, std::string>(
         arr, [](const std::string&, int x) { return std::to_string(x * 2) + ' '; });
 
