@@ -4,9 +4,12 @@ int Pizza::getPrice() const
 {
     int price = 0;
 
-    if (size == "small") price = 300;
-    if (size == "medium") price = 500;
-    if (size == "large") price = 700;
+    if (size == "small")
+        price = 300;
+    if (size == "medium")
+        price = 500;
+    if (size == "large")
+        price = 700;
 
     price += toppings.size() * 50;
 
@@ -51,6 +54,6 @@ std::ostream& operator<<(std::ostream& os, const Pizza& pizza)
         os << (i == 0 ? ", toppings-" : ", ") << pizza.toppings[i];
     }
 
-    os << "pizza consts: " << pizza.getPrice() << " rubles";
+    os << ", pizza costs: " << pizza.getPrice() << " rubles";
     return os;
 }

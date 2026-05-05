@@ -7,6 +7,7 @@ using namespace std;
 
 int main()
 {
+  cin >> std::boolalpha;
     array<int, 10> arr;
 
     initArray(arr, -100, 200);

@@ -11,7 +11,7 @@ void runBuiltInTests();
 int main()
 {
     runBuiltInTests();
-
+    std::cout << "\n"; 
     std::cout << "----------------------------------------\n";
     std::cout << "Enter a string with brackets: ";
     const std::string example = "{[()]}(()[])";

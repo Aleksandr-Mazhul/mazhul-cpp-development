@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(cpp_semester_2_09_10_04_2026_pizza LANGUAGES CXX)
+project(cpp_semester_2_labsv6_lab4 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_executable(cpp_semester_2_09_10_04_2026_pizza
+add_executable(cpp_semester_2_labsv6_lab4
+    "jagged_matrix.cpp"
     "main.cpp"
-    "Order.cpp"
-    "Pizza.cpp"
+    "tests.cpp"
 )
