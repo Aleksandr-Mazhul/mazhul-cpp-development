@@ -1,9 +1,7 @@
 #include <deque>
-
 #include <iostream>
 #include <queue>
 #include <stack>
-#include <stdexcept>
 #include <string>
 #include <vector>
 
@@ -47,7 +45,7 @@ class IterableStack
 
     const T& top() const
     {
-        return top();
+        return data.back();
     }
 
     bool empty() const
@@ -83,7 +81,6 @@ class IterableStack
   private:
     vector<T> data;
 };
-
 
 template <typename Container>
 void printByIterator(const Container& c, const string& name)
