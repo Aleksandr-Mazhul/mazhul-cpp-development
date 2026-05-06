@@ -109,25 +109,21 @@ int main()
     numbers.push(30);
     numbers.push(40);
 
-    printByIterator(numbers,
-                    "queue (front -> back)");
+    printByIterator(numbers, "queue (front -> back)");
 
     numbers.pop();
 
-    printByIterator(numbers,
-                    "after pop");
+    printByIterator(numbers, "after pop");
 
     auto& first = numbers.front();
     first += 100;
 
-    printByIterator(numbers,
-                    "after front modification");
+    printByIterator(numbers, "after front modification");
 
     auto& last = numbers.back();
     last += 1000;
 
-    printByIterator(numbers,
-                    "after back modification");
+    printByIterator(numbers, "after back modification");
 
     cout << '\n';
 
@@ -137,8 +133,7 @@ int main()
     points.push(Point{10, 20});
     points.push(Point{100, 200});
 
-    printByIterator(points,
-                    "points queue");
+    printByIterator(points, "points queue");
 
     cout << '\n';
 

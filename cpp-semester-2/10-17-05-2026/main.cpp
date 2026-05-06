@@ -210,7 +210,7 @@ void visualizeFromResult(std::size_t n, const FlaviusResult& result, std::ostrea
     std::size_t step = 1;
     for (std::size_t dead : result.eliminatedOrder)
     {
-        auto it = std::find(alive.begin(), alive.end(), dead);
+        auto it = std::ranges::find(alive, dead);
         if (it == alive.end())
         {
             out << "Error: " << dead << " is already missing\n";

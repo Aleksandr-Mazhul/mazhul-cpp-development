@@ -8,4 +8,5 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(cpp_semester_2_11_22_05_2026_balanced_brackets_validator
     "main.cpp"
+        ../reverse-polish-notation/reverse-polish-notation.cpp
 )
