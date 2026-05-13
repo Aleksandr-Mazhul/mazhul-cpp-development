@@ -313,8 +313,125 @@ cpp-semester-2/
 └── labsV6/                                 → Example: Unit tests
 ```
 
+## 💡 Типовые Сценарии AI-Работы
+
+### Сценарий 1: Реализовать новый класс
+```
+1. Прочитай AGENTS.md (этот файл) → 5 минут
+2. Посмотри counter.h как пример → 5 минут
+3. Напиши свой класс с:
+   - ✅ default member initializers
+   - ✅ Copy + Move конструкторы
+   - ✅ Валидация в конструкторе (throw)
+   - ✅ const методы помечены
+4. Тестирование: g++ -std=c++20 -o test MyClass.h main.cpp
+```
+
+### Сценарий 2: Создать Builder (Fluent Interface)
+```
+1. Посмотри Pizza.h и Pizza.cpp → примеры шаблона
+2. Создай nested Builder класс внутри основного
+3. Каждый setter возвращает Builder& для chaining
+4. Финальный метод build() возвращает готовый объект
+```
+
+### Сценарий 3: Реализовать шаблонный контейнер
+```
+1. Используй template<typename T> или template<typename T, size_t Size>
+2. Помещай всю реализацию в .h файл (header-only)
+3. Для сложных операций используй std::function
+4. Проверь constexpr и if constexpr для compile-time решений
+```
+
+### Сценарий 4: Добавить новый проект в корень
+```
+1. Создай папку: cpp-semester-2/ДД-ММ-ГГ-формат/project-name/
+2. Добавь файлы: main.cpp, MyClass.h, MyClass.cpp, CMakeLists.txt, README.md
+3. Обнови корневой CMakeLists.txt: add_subdirectory("cpp-semester-2/...")
+4. Проверь сборку: cmake .. && cmake --build . --target project-name
+```
+
+## 🐛 Отладка и Диагностика
+
+### Проблема: Компилятор не находит header
+```bash
+# Проверь:
+1. #pragma once или #ifndef в начале .h файла
+2. #include "MyClass.h" (кавычки для локальных, угловые скобки для std)
+3. Путь файла в CMakeLists.txt корректен
+4. Перепостри проект: rm -rf build && mkdir build && cd build && cmake ..
+```
+
+### Проблема: Ошибка линковки (undefined reference)
+```bash
+# Это значит:
+- Забыл добавить .cpp файл в CMakeLists.txt
+- ИЛИ объявил функцию в .h но не реализовал в .cpp
+- ИЛИ реализация находится в неправильном файле
+
+# Решение:
+add_executable(myapp main.cpp MyClass.cpp)  ← добавь все .cpp файлы
+```
+
+### Проблема: "Операция неоднозначна" при перегрузке операторов
+```cpp
+// ❌ НЕПРАВИЛЬНО:
+class Pizza {
+  public:
+    Pizza operator=(const Pizza& other);      // Member function
+};
+Pizza p1, p2;
+p1 = p2;  // Ambiguous: p1.operator=(p2) or p2 = p1?
+
+// ✅ ПРАВИЛЬНО:
+class Pizza {
+  public:
+    Pizza& operator=(const Pizza& other);     // возвращай ссылку
+};
+```
+
+## 📊 Чек-лист перед Commit'ом
+
+```
+[ ] Компилируется без ошибок и warning'ов
+[ ] Все классы имеют конструкторы и деструкторы
+[ ] const методы помечены const
+[ ] Нет magic numbers (используй #define или const)
+[ ] Исключения выбрасываются для невалидных входов
+[ ] CMakeLists.txt обновлён, если добавлены новые файлы
+[ ] README.md описывает проект (если это корневой проект)
+[ ] Функции помечены [[nodiscard]] если результат важен
+[ ] Move semantics работает (Rule of Five реализована)
+[ ] Тесты проходят (если есть)
+```
+
+## 🎓 Обучающие Ресурсы (в репозитории)
+
+| Файл | Для изучения | Сложность |
+|------|---|---|
+| `counter.h` | Инкапсуляция, Copy/Move, исключения | ⭐⭐ |
+| `Pizza.h` | Builder pattern, Nested classes | ⭐⭐ |
+| `Array.h` | Динамическая память, capacity | ⭐⭐⭐ |
+| `queue/main.cpp` | Template классы, циклический буфер | ⭐⭐⭐ |
+| `labsV6/lab6` | Higher-order functions, std::function | ⭐⭐⭐ |
+
+## 🎯 Метрика: Когда Вызвать Агента Снова
+
+**Используй агента для:**
+- ✅ Новой функциональности (класс, функция, алгоритм)
+- ✅ Рефакторинга (улучшение структуры)
+- ✅ Багов (тестирование, отладка)
+- ✅ Интеграции (добавление в CMakeLists.txt)
+- ✅ Документации (README, комментарии)
+
+**НЕ используй агента для:**
+- ❌ Мелких опечаток (исправляй сам)
+- ❌ Переименований через IDE (используй refactor)
+- ❌ Перемещения файлов (используй git mv)
+
 ---
 
 **Последнее обновление**: 2026-05-13  
 **Версия CMake**: 3.16+  
 **Стандарт C++**: 20 (с поддержкой C++11/14/17)
+**Статус**: ✅ Production-ready guide для AI-агентов
