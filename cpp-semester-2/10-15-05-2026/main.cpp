@@ -47,8 +47,8 @@ int main()
             }
 
             firstPass = false;
-
-        } while (index != startIndex || firstPass);
+        }
+        while (index != startIndex || firstPass);
 
         std::cout << "После круга остались: " << people << std::endl;
     }

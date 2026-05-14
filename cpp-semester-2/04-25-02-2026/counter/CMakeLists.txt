@@ -7,6 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(cpp_semester_2_04_25_02_2026_counter
-    counter.cpp
-    main.cpp
+        counter.cpp
+        main.cpp
 )

@@ -3,7 +3,8 @@
 #include "tests.cpp"
 using namespace std;
 
-int main() {
+int main()
+{
     // ---------------------------
     // ДЕМО (обязательное)
     // ---------------------------
@@ -13,7 +14,7 @@ int main() {
     cin >> n;
     cin >> minValue >> maxValue;
 
-    double *a = new double[n];
+    double* a = new double[n];
     initArray(a, n, minValue, maxValue);
 
     cout << "Исходный массив:\n";

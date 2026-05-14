@@ -7,12 +7,7 @@
 
 class Order
 {
-
-
-
-
-
-  public:
+public:
     Order(int number, const std::string& name);
 
     int totalPrice() const;
@@ -23,7 +18,7 @@ class Order
 
     friend std::ostream& operator<<(std::ostream& os, const Order& order);
 
-  private:
+private:
     int orderNumber;
     std::string customerName;
     std::vector<Pizza> pizzas;

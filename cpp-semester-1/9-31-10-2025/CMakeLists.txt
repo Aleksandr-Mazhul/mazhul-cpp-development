@@ -7,6 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(cpp_9_31_10_2025
-    taylor v2.cpp
-    taylor.cpp
+        taylor v2.cpp
+        taylor.cpp
 )

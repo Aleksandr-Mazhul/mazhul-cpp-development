@@ -4,17 +4,20 @@ using namespace std;
 
 double taylorSin(double x, int terms);
 
-double taylorSin(double x, double epsilon, int &termsUsed);
+double taylorSin(double x, double epsilon, int& termsUsed);
 
 
-int main() {
-    while (true) {
+int main()
+{
+    while (true)
+    {
         int mod{};
         cout << "Enter a number to select the mode.: " << endl;
         cout << "1 - number of terms\n";
         cout << "2 - epsilon mode\n";
         cin >> mod;
-        if (mod == 1) {
+        if (mod == 1)
+        {
             double x{};
             cout << "Enter x ";
             cin >> x;
@@ -22,11 +25,13 @@ int main() {
             cout << "Enter the number of terms: ";
             cin >> terms;
             cout << "taylorSin( " << "corner: " << x << " , " << "terms: " << terms << " ): " << taylorSin(x, terms) <<
-                    endl;
+                endl;
             cout << "sin(x) library: " << sin(x) << endl;
 
             break;
-        } else if (mod == 2) {
+        }
+        else if (mod == 2)
+        {
             int termsUsed{};
             double x{};
             cout << "Enter x ";
@@ -39,7 +44,9 @@ int main() {
             cout << "sin(x) library: " << sin(x) << endl;
             cout << "terms used: " << termsUsed << endl;
             break;
-        } else {
+        }
+        else
+        {
             cout << "select the mode" << endl;
         }
     }
@@ -47,10 +54,12 @@ int main() {
 }
 
 
-double taylorSin(double x, int terms) {
+double taylorSin(double x, int terms)
+{
     double term = x;
     double result = term;
-    for (int i{0}; i <= terms - 2; i++) {
+    for (int i{0}; i <= terms - 2; i++)
+    {
         term *= (-(x * x) / (2 * i + 2) / (2 * i + 3));
         result += term;
     }
@@ -58,12 +67,14 @@ double taylorSin(double x, int terms) {
 }
 
 
-double taylorSin(double x, double epsilon, int &termsUsed) {
+double taylorSin(double x, double epsilon, int& termsUsed)
+{
     double term = x;
     double result = term;
     termsUsed = 1;
     int i{0};
-    while (fabs(term) > epsilon) {
+    while (fabs(term) > epsilon)
+    {
         term *= (-(x * x) / (2 * i + 2) / (2 * i + 3));
         result += term;
         i++;

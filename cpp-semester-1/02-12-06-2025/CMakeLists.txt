@@ -7,15 +7,15 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(cpp_02_12_06_2025
-    ex1.cpp
-    ex2.cpp
-    ex3.cpp
-    ex4.cpp
-    ex5.cpp
-    ex6.cpp
-    ex7.cpp
-    ex8.cpp
-    ex9.cpp
-    ex9GPT.cpp
-    ex9my.cpp
+        ex1.cpp
+        ex2.cpp
+        ex3.cpp
+        ex4.cpp
+        ex5.cpp
+        ex6.cpp
+        ex7.cpp
+        ex8.cpp
+        ex9.cpp
+        ex9GPT.cpp
+        ex9my.cpp
 )

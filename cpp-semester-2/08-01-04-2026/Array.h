@@ -5,7 +5,7 @@ using namespace std;
 
 class Array
 {
-  public:
+public:
     Array();
 
     void add(int element);
@@ -13,9 +13,7 @@ class Array
     int* getSource() const;
     int getLength() const;
 
-
-
-  private:
+private:
     int* source;
     size_t capacity{4}; // текущая емкость массива, начинается с дефолтного значения 4
     size_t growFactor{2};

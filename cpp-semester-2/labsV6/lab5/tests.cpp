@@ -16,8 +16,8 @@ bool arraysEqual(const int* a, int sizeA, const int* b, int sizeB)
 
 void testSingleDigitAbs()
 {
-    int data[] = { -15, -9, -3, 0, 7, 12 };
-    int expected[] = { 9, 3, 0, 7 };
+    int data[] = {-15, -9, -3, 0, 7, 12};
+    int expected[] = {9, 3, 0, 7};
 
     int outSize = 0;
     int* out = process(data, 6, filter, transform, outSize);
@@ -34,7 +34,7 @@ void testSingleDigitAbs()
 
 void testNoMatch()
 {
-    int data[] = { 10, -20, 100 };
+    int data[] = {10, -20, 100};
 
     int outSize = 0;
     int* out = process(data, 3, filter, transform, outSize);
@@ -51,8 +51,8 @@ void testNoMatch()
 
 void testAllMatch()
 {
-    int data[] = { -1, 2, -3, 4 };
-    int expected[] = { 1, 2, 3, 4 };
+    int data[] = {-1, 2, -3, 4};
+    int expected[] = {1, 2, 3, 4};
 
     int outSize = 0;
     int* out = process(data, 4, filter, transform, outSize);

@@ -7,7 +7,8 @@ int getCountOfDigits(long long number);
 
 bool isPalindrom(long long number);
 
-int main() {
+int main()
+{
     cout << (isPalindrom(-163473226) ? "PALINDROM" : "NOT") << endl;
     cout << (isPalindrom(32589706) ? "PALINDROM" : "NOT") << endl;
     cout << (isPalindrom(0) ? "PALINDROM" : "NOT") << endl;
@@ -22,8 +23,10 @@ int main() {
     cout << (isPalindrom(LLONG_MIN) ? "PALINDROM" : "NOT") << endl;
 }
 
-int getCountOfDigits(long long number) {
-    if (number == 0) {
+int getCountOfDigits(long long number)
+{
+    if (number == 0)
+    {
         return 1;
     }
 
@@ -33,15 +36,18 @@ int getCountOfDigits(long long number) {
 
     int count{};
 
-    while (number) {
+    while (number)
+    {
         count++;
         number /= 10;
     }
     return count;
 }
 
-bool isPalindrom(long long number) {
-    if (number > -10 && number < 10) {
+bool isPalindrom(long long number)
+{
+    if (number > -10 && number < 10)
+    {
         return true;
     }
 
@@ -49,9 +55,11 @@ bool isPalindrom(long long number) {
 
     int count(getCountOfDigits(number)), degree(pow(10, count - 1));
 
-    while (number) {
+    while (number)
+    {
         int first(number / degree), last(number % 10);
-        if (first != last) {
+        if (first != last)
+        {
             return false;
         }
         number %= degree;

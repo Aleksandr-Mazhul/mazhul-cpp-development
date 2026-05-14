@@ -22,7 +22,7 @@ ostream& operator<<(ostream& os, const Point& p)
 template <typename T>
 class IterableStack
 {
-  public:
+public:
     // TODO(student): для LIFO-обхода замените на reverse_iterator / const_reverse_iterator.
     using iterator = typename vector<T>::reverse_iterator;
     using constIterator = typename vector<T>::const_reverse_iterator;
@@ -78,7 +78,7 @@ class IterableStack
         return data.crend();
     }
 
-  private:
+private:
     vector<T> data;
 };
 

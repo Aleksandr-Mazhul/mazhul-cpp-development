@@ -168,7 +168,7 @@ void runTests()
     wcout << L"[Test 1] geometricMeanOddLowercase" << endl;
     wcout << L"Input: " << test1 << endl;
     wcout << L"Expected: (depends on odd lowercase letters: a=97, c=99, e=101, g=103, i=105)"
-          << endl;
+        << endl;
     wcout << L"Actual: " << geometricMeanOddLowercase(test1) << endl;
     wcout << L"--------------------------" << endl;
 

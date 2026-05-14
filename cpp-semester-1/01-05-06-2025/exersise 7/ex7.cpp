@@ -1,11 +1,13 @@
 #include <iostream>
 using namespace std;
 
-void DispTime(int hours, int minutes) {
+void DispTime(int hours, int minutes)
+{
     cout << "Time: " << hours << ":" << minutes << endl;
 }
 
-int main() {
+int main()
+{
     int hours;
     cout << "Enter the number of hours: ";
     cin >> hours;

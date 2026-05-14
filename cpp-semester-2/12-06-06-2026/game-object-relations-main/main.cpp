@@ -7,10 +7,12 @@
 #include "ScoreManager.h"
 #include "Weapon.h"
 
-int main() {
+int main()
+{
     std::cout << "Демонстрация сценария из задания\n";
 
-    try {
+    try
+    {
         // 1) Оружие (может быть разделяемым между Player и Enemy).
         auto sharedWeapon = std::make_shared<Weapon>("Starter Sword");
 
@@ -40,10 +42,14 @@ int main() {
         std::cout << "Оружие игрока: " << player.getWeapon().getName() << '\n';
         std::cout << "Текущий счет: " << scoreManager.getTotalScore() << '\n';
         std::cout << "Сценарий выполнен успешно.\n";
-    } catch (const std::logic_error &e) {
+    }
+    catch (const std::logic_error& e)
+    {
         std::cout << "Поймана заглушка: " << e.what() << '\n';
         std::cout << "Реализуйте метод и запустите снова.\n";
-    } catch (const std::exception &e) {
+    }
+    catch (const std::exception& e)
+    {
         std::cout << "Ошибка: " << e.what() << '\n';
     }
 

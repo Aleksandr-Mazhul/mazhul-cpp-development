@@ -3,7 +3,6 @@
 
 int main()
 {
-
     Timer start();
 
     std::cout << "Timer expired\n";

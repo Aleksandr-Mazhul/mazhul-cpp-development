@@ -28,7 +28,7 @@ int main()
     std::cout << "=== Debug Lab ===\n";
 
     auto nums = read_numbers();
-    
+
     int total = sum_vector(nums);
     int mx = find_max(nums);
     double avg = average(nums);

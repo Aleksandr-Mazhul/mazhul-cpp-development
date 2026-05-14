@@ -3,7 +3,8 @@ using namespace std;
 
 void getTypeOfSequence(long long, bool&, bool&, bool&);
 
-int main() {
+int main()
+{
     bool lessThen{0}, moreThan{0}, equal{0};
     getTypeOfSequence(987654321, lessThen, moreThan, equal);
     cout << equal << lessThen << moreThan << endl;
@@ -23,7 +24,8 @@ int main() {
     getTypeOfSequence(-1762157651761481, lessThen, moreThan, equal);
 }
 
-void getTypeOfSequence(long long number, bool& lessThen, bool& moreThan, bool& equal) {
+void getTypeOfSequence(long long number, bool& lessThen, bool& moreThan, bool& equal)
+{
     lessThen = false;
     moreThan = false;
     equal = false;
@@ -32,13 +34,19 @@ void getTypeOfSequence(long long number, bool& lessThen, bool& moreThan, bool& e
     int next = static_cast<int>(number % 10);
     number /= 10;
 
-    while (number) {
+    while (number)
+    {
         int previous = static_cast<int>(number % 10);
-        if (next > previous) {
+        if (next > previous)
+        {
             lessThen = true;
-        } else if (next < previous) {
+        }
+        else if (next < previous)
+        {
             moreThan = true;
-        } else {
+        }
+        else
+        {
             equal = true;
         }
         next = previous;

@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
-int main(){
+
+int main()
+{
     string name;
     string adress;
     cout << "Enter your name:" << endl;
@@ -8,4 +10,6 @@ int main(){
     cout << "Enter your adress" << endl;
     cin >> adress;
     cout << "name:" << name << endl << "adress:" << adress;
-}рроомоо
+}
+
+рроомоо

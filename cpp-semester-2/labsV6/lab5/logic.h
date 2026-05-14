@@ -9,7 +9,6 @@
 bool filter(int value);
 
 
-
 /**
  * @brief Transforms the input value.
  *

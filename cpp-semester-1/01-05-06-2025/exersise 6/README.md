@@ -20,7 +20,9 @@ Enter the number of light years: 4.2
 **1 световой год = 63 240 астрономических единиц**
 
 =================================================================================
+
 #### Вывод ####
+
 ```
 Enter the number of light years: 4.2
 4.2 light years = 265608 astronomical units.

@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(cpp_semester_2_06_18_03_2026_task
-    filters.cpp
-    main.cpp
-    predicates.cpp
+        filters.cpp
+        main.cpp
+        predicates.cpp
 )

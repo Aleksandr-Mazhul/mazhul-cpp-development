@@ -6,6 +6,7 @@
 значения с помощью символических констант. Для каждого вводимого значения
 должна использоваться отдельная переменная. Результат выполнения
 программы должен выглядеть следующим образом:
+
 ```objectivec
 Enter a latitude in degrees, minutes, and seconds:
 First, enter the degrees: 37
@@ -15,7 +16,9 @@ Finally, enter the seconds of arc: 19
 ```
 
 =================================================================================
+
 #### Вывод ####
+
 ```objectivec
 Enter a latitude in degrees, minutes, and seconds:
 First, enter the degrees: 37

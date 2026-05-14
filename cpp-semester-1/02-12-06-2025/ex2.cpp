@@ -4,10 +4,9 @@ using namespace std;
 
 int doSomething(int i);
 
-int main() {
-
-    
-cout << "doSomething" << endl;
+int main()
+{
+    cout << "doSomething" << endl;
     cout << (doSomething(-6) == -36 ? "passed" : "failed") << endl;
     cout << (doSomething(-5) == 5 ? "passed" : "failed") << endl;
     cout << (doSomething(-2) == 2 ? "passed" : "failed") << endl;
@@ -17,14 +16,17 @@ cout << "doSomething" << endl;
     return 0;
 }
 
-int doSomething(int i) {
+int doSomething(int i)
+{
     int result{i};
 
-    if (result < 0 && result >= -5) {
+    if (result < 0 && result >= -5)
+    {
         result = 0 - i;
     }
-    else if (result < -5) {
-        result = 0 - i*i;
+    else if (result < -5)
+    {
+        result = 0 - i * i;
     }
     return result;
 }

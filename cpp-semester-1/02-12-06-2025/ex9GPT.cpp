@@ -3,7 +3,8 @@ using namespace std;
 
 int doSomething(bool b1, bool b2, int i);
 
-int main() {
+int main()
+{
     cout << "doSomething" << endl;
     cout << (doSomething(true, true, -10) == -10 ? "passed" : "failed") << endl;
     cout << (doSomething(true, true, -9) == -4 ? "passed" : "failed") << endl;
@@ -18,52 +19,79 @@ int main() {
     return 0;
 }
 
-int doSomething(bool b1, bool b2, int i) {
+int doSomething(bool b1, bool b2, int i)
+{
     int result = i;
 
-    if (b1) {
-        if (i == 0) {
+    if (b1)
+    {
+        if (i == 0)
+        {
             result = -1;
-        } else if (i >= 2 && i <= 9) {
-            if (b2) {
+        }
+        else if (i >= 2 && i <= 9)
+        {
+            if (b2)
+            {
                 result = 10 - result;
-            } else {
+            }
+            else
+            {
                 result = 10 + result;
             }
-        } else if (i <= -2 && i >= -9) {
-            if (b2) {
+        }
+        else if (i <= -2 && i >= -9)
+        {
+            if (b2)
+            {
                 result = 5 + result;
-            } else {
+            }
+            else
+            {
                 result = 5 - result;
             }
         }
-    } else {
-
-
-        if (i == 0) {
-            if (b2) {
+    }
+    else
+    {
+        if (i == 0)
+        {
+            if (b2)
+            {
                 result = 1;
-            } else {
+            }
+            else
+            {
                 result = -1;
             }
-        } else if (b2) {
-            if (i <= -10 || i >= 10) {
+        }
+        else if (b2)
+        {
+            if (i <= -10 || i >= 10)
+            {
                 result = result + 1;
             }
-        } else {
-            if (i <= -10) { // <-- исправлено здесь
+        }
+        else
+        {
+            if (i <= -10)
+            {
+                // <-- исправлено здесь
                 result = result - 1;
             }
         }
 
-        if (i != 0 && i > -5 && i < 5) {
-            if (b2) {
+        if (i != 0 && i > -5 && i < 5)
+        {
+            if (b2)
+            {
                 result = result + 10;
-            } else {
+            }
+            else
+            {
                 result = result - 10;
             }
         }
-
     }
 
     return result;

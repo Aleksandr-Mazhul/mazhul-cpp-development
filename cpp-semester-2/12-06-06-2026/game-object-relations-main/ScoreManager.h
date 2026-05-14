@@ -2,14 +2,17 @@
 
 #include <stdexcept>
 
-class ScoreManager {
+class ScoreManager
+{
 public:
-    void addPoints(int points) {
+    void addPoints(int points)
+    {
         (void)points;
         throw std::logic_error("ScoreManager::addPoints is not implemented");
     }
 
-    int getTotalScore() const {
+    int getTotalScore() const
+    {
         throw std::logic_error("ScoreManager::getTotalScore is not implemented");
     }
 

@@ -1,25 +1,27 @@
 #include <iostream>
 
-template <typename T, size_t size> class Queue
+template <typename T, size_t size>
+class Queue
 {
-  public:
+public:
     Queue()
         : head()
-        , tail(-1)
-        , queue()
+          , tail(-1)
+          , queue()
     {
     }
 
     void add(T item);
 
-  private:
+private:
     size_t head = 0;
     T queue[size];
     size_t n;
     int tail;
 };
 
-template <typename T, size_t size> void Queue<T, size>::add(T item)
+template <typename T, size_t size>
+void Queue<T, size>::add(T item)
 {
     n++;
     if (n < size)
@@ -33,7 +35,7 @@ template <typename T, size_t size> void Queue<T, size>::add(T item)
         head++;
         head %= size;
     }
-  queue[tail] = item;
+    queue[tail] = item;
 }
 
 int main()

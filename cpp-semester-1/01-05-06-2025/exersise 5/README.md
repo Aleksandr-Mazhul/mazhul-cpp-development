@@ -17,7 +17,9 @@ Please enter a Celsius value: 20
 1,8 * Температура в градусах по Цельсию + 32**
 
 =================================================================================
+
 #### Вывод ####
+
 ```
 Pleas enter a celsius value: 20
 20 degrees Celsius is 68 degrees fahrenheit

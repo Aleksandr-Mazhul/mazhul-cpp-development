@@ -5,8 +5,6 @@
 
 int main()
 {
-
-
     std::string name;
 
     std::cout << "Enter name: ";
@@ -18,13 +16,13 @@ int main()
     std::cout << pizza1 << std::endl;
 
     auto pizza2 = Pizza::Builder()
-                      .setSize("large")
-                      .setDough("thick")
-                      .setSauce("bbq")
-                      .addTopping("mushrooms")
-                      .addTopping("olives")
-                      .addTopping("pepperoni")
-                      .build();
+                  .setSize("large")
+                  .setDough("thick")
+                  .setSauce("bbq")
+                  .addTopping("mushrooms")
+                  .addTopping("olives")
+                  .addTopping("pepperoni")
+                  .build();
 
     std::cout << pizza2 << std::endl;
 

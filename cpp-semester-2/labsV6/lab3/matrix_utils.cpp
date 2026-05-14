@@ -40,7 +40,7 @@ double calcElementLib(size_t i, size_t j)
 {
     if (i == j)
     {
-        return (cos(i + j) + 2*i - j)/ ((i + j + 1)*(i + j + 1));
+        return (cos(i + j) + 2 * i - j) / ((i + j + 1) * (i + j + 1));
     }
     else
     {
@@ -52,7 +52,7 @@ double calcElementTaylor(size_t i, size_t j)
 {
     if (i == j)
     {
-        return (cosTaylor(static_cast<double>(i + j)) + 2*i - j)/ ((i + j + 1)*(i + j + 1));
+        return (cosTaylor(static_cast<double>(i + j)) + 2 * i - j) / ((i + j + 1) * (i + j + 1));
     }
     else
     {
@@ -97,7 +97,6 @@ double cosTaylor(double x)
 }
 
 
-
 bool almostEqual(double a, double b, double eps)
 {
     return std::abs(a - b) < eps;
@@ -106,7 +105,7 @@ bool almostEqual(double a, double b, double eps)
 void testCalcElementLib()
 {
     double val = calcElementLib(1, 1);
-    double expected = (cos(2) + 2 * 1 - 1) / ((1 + 1 + 1)*(1 + 1 + 1));
+    double expected = (cos(2) + 2 * 1 - 1) / ((1 + 1 + 1) * (1 + 1 + 1));
 
     if (almostEqual(val, expected))
         std::cout << "[TEST] calcElementLib (1,1): PASS\n";

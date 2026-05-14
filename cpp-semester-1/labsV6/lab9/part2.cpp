@@ -5,7 +5,8 @@ using namespace std;
 
 double operation(double x);
 
-int main() {
+int main()
+{
     double y;
     cout << "Enter a floating point number: " << endl;
     cin >> y;
@@ -14,11 +15,13 @@ int main() {
     return 0;
 }
 
-double operation(double x) {
+double operation(double x)
+{
     int intPart{int(x < 0 ? x - 1 : x)};
-    double fractPart{x-intPart};
-    if (intPart < 10*fractPart) {
-        return x/10;
+    double fractPart{x - intPart};
+    if (intPart < 10 * fractPart)
+    {
+        return x / 10;
     }
     else return intPart;
 }

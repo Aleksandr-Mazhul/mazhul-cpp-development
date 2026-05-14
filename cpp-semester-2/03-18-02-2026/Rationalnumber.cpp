@@ -8,7 +8,8 @@ FractionClass::FractionClass(int numerator, int denominator)
     if (!denominator)
         throw std::invalid_argument("Denominator cannot be zero!");
 
-    if (denominator < 0) {
+    if (denominator < 0)
+    {
         denominator = -denominator;
         numerator = -numerator;
     }
@@ -27,7 +28,7 @@ FractionClass FractionClass::operator+(const FractionClass& other) const
 void FractionClass::addWith(const FractionClass& other)
 {
     numerator = numerator * other.denominator +
-                other.numerator * denominator;
+        other.numerator * denominator;
 
     denominator *= other.denominator;
 

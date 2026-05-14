@@ -7,6 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(cpp_11_14_11_2025
-    differentEllements.cpp
-    shift.cpp
+        differentEllements.cpp
+        shift.cpp
 )

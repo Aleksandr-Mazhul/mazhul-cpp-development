@@ -5,12 +5,12 @@
 
 class Pizza
 {
-  public:
+public:
     class Builder;
     friend std::ostream& operator<<(std::ostream& os, const Pizza& pizza);
     [[nodiscard]] int getPrice() const;
 
-  private:
+private:
     Pizza() = default;
     std::string size{"medium"};
     std::string dough{"thin"};
@@ -20,13 +20,13 @@ class Pizza
 
 class Pizza::Builder
 {
-  public:
+public:
     Builder& setSize(const std::string& size);
     Builder& setDough(const std::string& dough);
     Builder& setSauce(const std::string& sauce);
     Builder& addTopping(const std::string& topping);
     Pizza build();
 
-  private:
+private:
     Pizza pizza;
 };

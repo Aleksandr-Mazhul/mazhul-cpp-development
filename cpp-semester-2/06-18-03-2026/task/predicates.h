@@ -33,7 +33,10 @@ struct EvenPredicate
 class EqualsPredicate
 {
 public:
-    EqualsPredicate(int value) : value{value} {}
+    EqualsPredicate(int value) : value{value}
+    {
+    }
+
     bool operator()(int x) const { return x == value; }
 
 private:
@@ -43,7 +46,10 @@ private:
 class RangePredicate
 {
 public:
-    RangePredicate(int down, int up) : down{down}, up{up} {}
+    RangePredicate(int down, int up) : down{down}, up{up}
+    {
+    }
+
     bool operator()(int x) const { return x <= up && x >= down; }
 
 private:

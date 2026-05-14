@@ -2,7 +2,8 @@
 #include "matrix_utils.h"
 
 
-int main() {
+int main()
+{
     runAllTests();
 
     std::cout << "\n--- DEMO ---\n";

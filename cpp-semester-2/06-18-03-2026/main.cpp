@@ -67,7 +67,7 @@ struct EvenPredicate
 
 class EqualsPredicate
 {
-  public:
+public:
     EqualsPredicate(int value)
         : value{value}
     {
@@ -79,16 +79,16 @@ class EqualsPredicate
         return x == value;
     }
 
-  private:
+private:
     int value;
 };
 
 class RangePredicate
 {
-  public:
+public:
     RangePredicate(int down, int up)
         : down{down}
-        , up{up}
+          , up{up}
     {
         // this->value = value;
     }
@@ -98,7 +98,7 @@ class RangePredicate
         return x <= up && x >= down;
     }
 
-  private:
+private:
     int down, up;
 };
 
@@ -213,10 +213,6 @@ void filterByPredicate(const IntegerArray& numbers, Predicate predicate)
         }
     }
 }
-
-
-
-
 
 
 bool isPositive(int x)

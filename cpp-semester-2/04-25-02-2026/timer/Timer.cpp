@@ -2,16 +2,14 @@
 #include <stdexcept>
 #include <iostream>
 
-Timer::Timer():Timer(9) {
-
+Timer::Timer() : Timer(9)
+{
 }
 
-Timer::Timer(int seconds): remainingSeconds(seconds)
+Timer::Timer(int seconds) : remainingSeconds(seconds)
 {
     if (seconds < 0)
         throw std::invalid_argument("Time cannot be negative");
-
-
 }
 
 void Timer::tick()
@@ -28,11 +26,12 @@ void Timer::set(int seconds)
     remainingSeconds = seconds;
 }
 
-void Timer::start() {
+void Timer::start()
+{
     while (!isExpired())
     {
         std::cout << "Remaining: "
-                  << getRemaining() << "\n";
+            << getRemaining() << "\n";
         tick();
     }
 }

@@ -9,19 +9,23 @@ void test_fancA();
 
 void test_single_fancA(int n, double expected);
 
-int main() {
+int main()
+{
     test_fancA();
 }
 
-double fancA(int n) {
+double fancA(int n)
+{
     double sum = 0;
-    for (int i = 1; i <= n; i++) {
+    for (int i = 1; i <= n; i++)
+    {
         sum += 1.0 / i;
     }
     return sum;
 }
 
-void test_fancA() {
+void test_fancA()
+{
     test_single_fancA(6, 2.4499999999999997);
     test_single_fancA(10, 2.9289682539682538);
     test_single_fancA(100, 5.187377517639621);
@@ -29,6 +33,7 @@ void test_fancA() {
     test_single_fancA(10000000, 16.695311365857272);
 }
 
-void test_single_fancA(int n, double expected) {
+void test_single_fancA(int n, double expected)
+{
     cout << (abs(fancA(n) - expected) <= 0.0001 ? "passed" : "failed") << endl;
 }

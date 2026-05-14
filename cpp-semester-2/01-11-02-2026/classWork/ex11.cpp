@@ -13,12 +13,12 @@ std::string trafficLightToString(TrafficLight light)
 {
     switch (light)
     {
-        case TrafficLight::Red:
-            return "Red";
-        case TrafficLight::Yellow:
-            return "Yellow";
-        case TrafficLight::Green:
-            return "Green";
+    case TrafficLight::Red:
+        return "Red";
+    case TrafficLight::Yellow:
+        return "Yellow";
+    case TrafficLight::Green:
+        return "Green";
     }
 }
 

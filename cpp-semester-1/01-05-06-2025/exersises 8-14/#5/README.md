@@ -13,10 +13,12 @@ Enter the population of the US: 310783781
 The population of the US is 4.50492% of the world population.
 ```
 
-Можете поискать в Интернете более точные значения. 
+Можете поискать в Интернете более точные значения.
 
 =================================================================================
+
 #### Вывод ####
+
 ```objectivec
 Enter the world's population: 6898758899_
 Enter the population of the country: 310783781__

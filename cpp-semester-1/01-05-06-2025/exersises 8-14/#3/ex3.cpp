@@ -2,8 +2,9 @@
 using namespace std;
 
 
-int main() {
-    system ("cls");
+int main()
+{
+    system("cls");
     cout << "Enter a latitude in degrees, minutes, and seconds:" << endl;
 
     double degrees;
@@ -18,8 +19,8 @@ int main() {
     cout << "Finally, enter the seconds of arc:" << endl;
     cin >> seconds;
 
-    double result = degrees + minutes/60 + seconds/3600;
+    double result = degrees + minutes / 60 + seconds / 3600;
 
-    cout << degrees <<"degrees," << minutes <<"minutes," << seconds << "seconds=" << result << endl;
-    return 0; 
+    cout << degrees << "degrees," << minutes << "minutes," << seconds << "seconds=" << result << endl;
+    return 0;
 }

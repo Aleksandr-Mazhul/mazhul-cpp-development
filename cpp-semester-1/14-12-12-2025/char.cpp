@@ -4,8 +4,8 @@
 using namespace std;
 
 
-
-int main() {
+int main()
+{
     char str[1024]{"hello"};
     cout << str << endl;
 }

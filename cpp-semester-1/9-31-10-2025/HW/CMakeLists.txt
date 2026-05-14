@@ -7,6 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(hw_2
-    my_try.cpp
-    taylor_sin.cpp
+        my_try.cpp
+        taylor_sin.cpp
 )

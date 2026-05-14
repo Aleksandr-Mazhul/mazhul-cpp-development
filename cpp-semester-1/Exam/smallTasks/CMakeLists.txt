@@ -7,5 +7,5 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(smalltasks
-    deleteDIgInNum2.cpp
+        deleteDIgInNum2.cpp
 )

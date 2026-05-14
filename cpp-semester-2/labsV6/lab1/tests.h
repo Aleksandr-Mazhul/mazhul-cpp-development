@@ -3,7 +3,7 @@
 
 bool equals(double a, double b, double eps = 1e-6);
 
-void printTestResult(const std::string &testName, bool result);
+void printTestResult(const std::string& testName, bool result);
 
 bool testInitArrayRange();
 

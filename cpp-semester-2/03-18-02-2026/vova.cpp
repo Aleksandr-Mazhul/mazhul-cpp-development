@@ -5,7 +5,6 @@
 using namespace std;
 
 
-
 class FractionClass
 {
 public:
@@ -16,7 +15,8 @@ public:
             throw invalid_argument("Durling, Denominator can not be zero!");
         }
 
-        if (denominator < 0) {
+        if (denominator < 0)
+        {
             denominator = -denominator;
             numerator = -numerator;
         }
@@ -59,8 +59,8 @@ public:
     }
 
 private:
-    int numerator{ 1 };
-    int denominator{ 1 };
+    int numerator{1};
+    int denominator{1};
 
     static void reduce(int& numerator, int& denominator)
     {
@@ -69,16 +69,11 @@ private:
         denominator /= gcd;
         numerator /= gcd;
     }
-
 };
-
-
-
 
 
 int main()
 {
-
     FractionClass fraction1(1, 2);
     cout << "Before reduction: " << fraction1.toString() << endl;
 
@@ -87,8 +82,8 @@ int main()
     fraction1.addWith(fraction2);
     cout << "After reduction: " << fraction1.toString() << endl;
 
-    FractionClass result{ fraction1 + fraction2 };
+    FractionClass result{fraction1 + fraction2};
 
-    FractionClass fraction{ FractionClass::add(fraction1,fraction2) };
-    cout << fraction.toString()<<endl;
+    FractionClass fraction{FractionClass::add(fraction1, fraction2)};
+    cout << fraction.toString() << endl;
 }

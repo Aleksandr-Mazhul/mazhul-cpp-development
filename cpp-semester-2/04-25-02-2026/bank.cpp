@@ -11,7 +11,7 @@ using namespace std;
  */
 class BankAccount
 {
-  public:
+public:
     /**
      * Constructs an account with the given owner name and initial deposit.
      * @param ownerName non-empty owner name
@@ -20,7 +20,7 @@ class BankAccount
      */
     BankAccount(const std::string& ownerName, double initialDeposit)
         : ownerName(ownerName)
-        , balance(initialDeposit)
+          , balance(initialDeposit)
 
     {
         ValidateEmptyString(ownerName, "BankAccount cant be empty");
@@ -136,7 +136,7 @@ class BankAccount
         return this->balance;
     }
 
-  private:
+private:
     std::string ownerName;
     double balance;
     static int count;

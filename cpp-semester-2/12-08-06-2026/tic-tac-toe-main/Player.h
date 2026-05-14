@@ -4,22 +4,28 @@
 
 #include "Board.h"
 
-class Player {
+class Player
+{
 public:
-    Player(std::string name, char mark) : name(std::move(name)), mark(mark) {
+    Player(std::string name, char mark) : name(std::move(name)), mark(mark)
+    {
     }
 
-    const std::string& getName() const {
+    virtual ~Player() = default;
+
+    const std::string& getName() const
+    {
         return name;
     }
 
-    char getMark() const {
+    char getMark() const
+    {
         return mark;
     }
 
     virtual std::pair<int, int> readMove(const Board& board) const = 0;
 
 private:
-	std::string name;
-	char mark;
+    std::string name;
+    char mark;
 };

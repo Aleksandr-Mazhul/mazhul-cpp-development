@@ -9,7 +9,7 @@ using namespace std;
 
 int BankAccount::accountCount = 0;
 
-BankAccount::BankAccount(const std::string &ownerName, double initialDeposit)
+BankAccount::BankAccount(const std::string& ownerName, double initialDeposit)
     : ownerName(ownerName),
       accountNumber(generateAccountNumber()),
       balance(initialDeposit),
@@ -21,7 +21,7 @@ BankAccount::BankAccount(const std::string &ownerName, double initialDeposit)
     accountCount++;
 }
 
-BankAccount::BankAccount(const std::string &ownerName)
+BankAccount::BankAccount(const std::string& ownerName)
     : BankAccount(ownerName, 0.0)
 {
 }
@@ -31,12 +31,12 @@ int BankAccount::getAccountCount()
     return accountCount;
 }
 
-const std::string &BankAccount::getOwnerName() const
+const std::string& BankAccount::getOwnerName() const
 {
     return ownerName;
 }
 
-const std::string &BankAccount::getAccountNumber() const
+const std::string& BankAccount::getAccountNumber() const
 {
     return accountNumber;
 }
@@ -71,7 +71,7 @@ void BankAccount::withdraw(double amount)
     addToHistory(OperationType::Withdraw, amount, "");
 }
 
-void BankAccount::transfer(BankAccount &targetAccount, double amount)
+void BankAccount::transfer(BankAccount& targetAccount, double amount)
 {
     if (this == &targetAccount)
     {
@@ -106,7 +106,7 @@ void BankAccount::transfer(BankAccount &targetAccount, double amount)
     }
 }
 
-void BankAccount::addToHistory(OperationType type, double amount, const std::string &accountNumber)
+void BankAccount::addToHistory(OperationType type, double amount, const std::string& accountNumber)
 {
     if (historySize >= maxOperations)
     {
@@ -127,7 +127,7 @@ size_t BankAccount::getHistorySize() const
     return historySize;
 }
 
-const Operation *BankAccount::getOperation(size_t i) const
+const Operation* BankAccount::getOperation(size_t i) const
 {
     if (i >= historySize)
     {
@@ -143,7 +143,7 @@ std::string BankAccount::generateAccountNumber()
     return "ACC" + std::to_string(4000 + id++);
 }
 
-void BankAccount::ValidateEmptyString(const std::string &name, const std::string &message)
+void BankAccount::ValidateEmptyString(const std::string& name, const std::string& message)
 {
     if (name.empty())
     {
@@ -151,7 +151,7 @@ void BankAccount::ValidateEmptyString(const std::string &name, const std::string
     }
 }
 
-void BankAccount::validateAmountPositive(double value, const std::string &message)
+void BankAccount::validateAmountPositive(double value, const std::string& message)
 {
     if (value < 0)
     {
@@ -159,7 +159,7 @@ void BankAccount::validateAmountPositive(double value, const std::string &messag
     }
 }
 
-void BankAccount::validateAmountFinite(double value, const std::string &message)
+void BankAccount::validateAmountFinite(double value, const std::string& message)
 {
     if (!std::isfinite(value))
     {
@@ -167,15 +167,15 @@ void BankAccount::validateAmountFinite(double value, const std::string &message)
     }
 }
 
-std::ostream &operator<<(std::ostream &os, const BankAccount &account)
+std::ostream& operator<<(std::ostream& os, const BankAccount& account)
 {
     return os << "[#"
-              << account.getAccountNumber() << ", "
-              << account.getOwnerName() << ", balance: "
-              << account.getBalance() << "]\n";
+        << account.getAccountNumber() << ", "
+        << account.getOwnerName() << ", balance: "
+        << account.getBalance() << "]\n";
 }
 
-std::ostream &operator<<(std::ostream &os, const OperationType &operation)
+std::ostream& operator<<(std::ostream& os, const OperationType& operation)
 {
     switch (operation)
     {
@@ -195,10 +195,10 @@ std::ostream &operator<<(std::ostream &os, const OperationType &operation)
     return os;
 }
 
-std::ostream &operator<<(std::ostream &os, const Operation &operation)
+std::ostream& operator<<(std::ostream& os, const Operation& operation)
 {
     return os << "[" << operation.type
-              << "] amount: " << operation.amount
-              << ", account: " << operation.accountNumber
-              << ", time: " << std::ctime(&operation.date);
+        << "] amount: " << operation.amount
+        << ", account: " << operation.accountNumber
+        << ", time: " << std::ctime(&operation.date);
 }

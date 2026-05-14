@@ -1,9 +1,10 @@
 #include "Order.h"
 
 #include "Pizza.h"
+
 Order::Order(int number, const std::string& name)
     : orderNumber(number)
-    , customerName(name)
+      , customerName(name)
 {
 }
 

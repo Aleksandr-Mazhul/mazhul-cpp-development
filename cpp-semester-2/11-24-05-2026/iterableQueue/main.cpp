@@ -19,7 +19,7 @@ ostream& operator<<(ostream& os, const Point& p)
 template <typename T>
 class IterableQueue
 {
-  public:
+public:
     using iterator = typename deque<T>::iterator;
     using constIterator = typename deque<T>::const_iterator;
 
@@ -83,7 +83,7 @@ class IterableQueue
         return data.cend();
     }
 
-  private:
+private:
     deque<T> data;
 };
 

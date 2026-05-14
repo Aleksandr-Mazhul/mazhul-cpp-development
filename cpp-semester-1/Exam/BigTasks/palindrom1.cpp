@@ -7,21 +7,25 @@ int getCountOfDigit(int number);
 
 bool isPalindrome(int number);
 
-int sumOfPalindromeElements(const int *array, int n, int a, int b);
+int sumOfPalindromeElements(const int* array, int n, int a, int b);
 
-int main() {
-int array[]{11, 22, 33, 44, 121, 131, 242, 345, 456};
+int main()
+{
+    int array[]{11, 22, 33, 44, 121, 131, 242, 345, 456};
     cout << sumOfPalindromeElements(array, 3, 2, 20000);
 }
 
-int getCountOfDigit(int number) {
+int getCountOfDigit(int number)
+{
     size_t count{0};
 
-    if (number <= 0) {
+    if (number <= 0)
+    {
         return 0;
     }
 
-    while (number > 0) {
+    while (number > 0)
+    {
         count++;
         number /= 10;
     }
@@ -60,30 +64,37 @@ int getCountOfDigit(int number) {
 // }
 
 
-bool isPalindrome(int number) {
+bool isPalindrome(int number)
+{
     if (number < 0) return false;
     int num = number;
     int digits = getCountOfDigit(num);
-    int po = pow(10,digits-1);
+    int po = pow(10, digits - 1);
     int newNumer{0};
-    for (int i{0}; i < digits; i++) {
+    for (int i{0}; i < digits; i++)
+    {
         int digit = num % 10;
         num = (num - digit) / 10;
         newNumer = newNumer + digit * po;
         po /= 10;
     }
-    if (newNumer == number) {
+    if (newNumer == number)
+    {
         return true;
     }
     return false;
 }
 
 
-int sumOfPalindromeElements(const int *array, int n, int a, int b) {
+int sumOfPalindromeElements(const int* array, int n, int a, int b)
+{
     int sum{0};
-    for (const int *p{array}; p < array + n; p++) {
-        if (*p > a && *p < b) {
-            if (isPalindrome(*p)) {
+    for (const int* p{array}; p < array + n; p++)
+    {
+        if (*p > a && *p < b)
+        {
+            if (isPalindrome(*p))
+            {
                 sum += *p;
             }
         }

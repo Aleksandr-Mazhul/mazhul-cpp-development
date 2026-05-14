@@ -11,7 +11,7 @@ void runBuiltInTests();
 int main()
 {
     runBuiltInTests();
-    std::cout << "\n"; 
+    std::cout << "\n";
     std::cout << "----------------------------------------\n";
     std::cout << "Enter a string with brackets: ";
     const std::string example = "{[()]}(()[])";
@@ -37,22 +37,24 @@ int main()
 
 void runBuiltInTests()
 {
-    const std::vector<std::string> testCases = {"{[()]}",
-                                                "{[()]}(()[])",
-                                                "(((())))",
-                                                "[{()}](){}",
-                                                "",
-                                                "abc(def)[x]{y}",
-                                                "([{}])()[]{}",
-                                                "(",
-                                                "}",
-                                                "([)]",
-                                                "{[(])}",
-                                                "(()",
-                                                "())",
-                                                "][",
-                                                "{[()]}]",
-                                                "((a+b)*[c-d])"};
+    const std::vector<std::string> testCases = {
+        "{[()]}",
+        "{[()]}(()[])",
+        "(((())))",
+        "[{()}](){}",
+        "",
+        "abc(def)[x]{y}",
+        "([{}])()[]{}",
+        "(",
+        "}",
+        "([)]",
+        "{[(])}",
+        "(()",
+        "())",
+        "][",
+        "{[()]}]",
+        "((a+b)*[c-d])"
+    };
 
     std::cout << "Built-in tests:\n";
     for (const auto& test : testCases)
@@ -60,15 +62,15 @@ void runBuiltInTests()
         const bool byStack = isBalancedBrackets(test);
         const bool byReduction = isBalancedBracketsByReduction(test);
         std::cout << "  \"" << test << "\" -> "
-                  << "stack: " << (byStack ? "passed" : "failed")
-                  << ", reduction: " << (byReduction ? "passed" : "failed") << "\n";
+            << "stack: " << (byStack ? "passed" : "failed")
+            << ", reduction: " << (byReduction ? "passed" : "failed") << "\n";
     }
 }
 
 bool isMatchingPair(char open, char close)
 {
     return (open == '(' && close == ')') || (open == '[' && close == ']')
-           || (open == '{' && close == '}');
+        || (open == '{' && close == '}');
 }
 
 bool isBalancedBrackets(const std::string& text)

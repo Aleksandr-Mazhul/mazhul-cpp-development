@@ -90,7 +90,7 @@ std::string infixToPostfix(const std::string& expression)
         if (isOperator(ch))
         {
             while (!operators.empty() && operators.top() != '('
-                   && priority(operators.top()) >= priority(ch))
+                && priority(operators.top()) >= priority(ch))
             {
                 output += operators.top();
                 output += ' ';
@@ -131,14 +131,16 @@ struct TestCase
 
 int main()
 {
-    std::vector<TestCase> tests = {{"(A + B) * (C - D) / E", "A B + C D - * E /"},
-                                   {"a + b * (c - d) / e + f", "a b c d - * e / + f +"},
-                                   {"x*y+z", "x y * z +"},
-                                   {"a+b*c", "a b c * +"},
-                                   {"(a+b)*(c-d)", "a b + c d - *"},
-                                   {"p/(q-r)*s+t", "p q r - / s * t +"},
-                                   {"10 + 25 * 3", "10 25 3 * +"},
-                                   {"100*(2+12)/14", "100 2 12 + * 14 /"}};
+    std::vector<TestCase> tests = {
+        {"(A + B) * (C - D) / E", "A B + C D - * E /"},
+        {"a + b * (c - d) / e + f", "a b c d - * e / + f +"},
+        {"x*y+z", "x y * z +"},
+        {"a+b*c", "a b c * +"},
+        {"(a+b)*(c-d)", "a b + c d - *"},
+        {"p/(q-r)*s+t", "p q r - / s * t +"},
+        {"10 + 25 * 3", "10 25 3 * +"},
+        {"100*(2+12)/14", "100 2 12 + * 14 /"}
+    };
 
     for (const TestCase& test : tests)
     {

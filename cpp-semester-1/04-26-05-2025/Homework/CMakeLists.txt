@@ -7,13 +7,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(homework
-    A.cpp
-    B.cpp
-    C.cpp
-    D.cpp
-    E.cpp
-    F.cpp
-    G.cpp
-    H.cpp
-    I.cpp
+        A.cpp
+        B.cpp
+        C.cpp
+        D.cpp
+        E.cpp
+        F.cpp
+        G.cpp
+        H.cpp
+        I.cpp
 )

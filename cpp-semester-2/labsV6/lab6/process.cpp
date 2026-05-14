@@ -21,8 +21,8 @@ int* process(const int* src, int size,
 
     for (int i = 0; i < size; ++i)
     {
-        if (filter(src[i]))                 // lambda: filter
-            buf[count++] = transform(src[i]);  // lambda: transform
+        if (filter(src[i])) // lambda: filter
+            buf[count++] = transform(src[i]); // lambda: transform
     }
 
     outSize = count;
@@ -47,7 +47,7 @@ void printArr(const int* arr, int size)
 {
     for (int i{0}; i < size; ++i)
     {
-       cout << arr[i] << " " ;
+        cout << arr[i] << " ";
     }
     cout << endl;
 }

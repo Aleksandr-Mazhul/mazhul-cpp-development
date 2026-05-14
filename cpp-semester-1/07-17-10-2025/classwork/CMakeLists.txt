@@ -7,6 +7,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(classwork_3
-    any.cpp
-    Sequence.cpp
+        any.cpp
+        Sequence.cpp
 )

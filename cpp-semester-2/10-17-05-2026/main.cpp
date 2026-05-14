@@ -35,6 +35,7 @@ int main()
 
     return 0;
 }
+
 //
 FlaviusResult flaviusJosephusOrder(std::size_t warriorsQuantity, std::size_t killStep)
 {

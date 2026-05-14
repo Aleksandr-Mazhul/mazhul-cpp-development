@@ -46,36 +46,39 @@ int main()
 
 
     copyFromData();
-    bubbleSort<int, int, int (*)(int)>(array, 0, n - 1, keyAbs);
-    display<int, 0, n - 1>(array);
+    bubbleSort < int, int, int(*)
+    (int)
+    >
+    (array, 0, n - 1, keyAbs);
+    display < int, 0, n - 1 > (array);
 
     copyFromData();
     int l{4};
     bubbleSort<int, int, std::function<int(int)>>(
         array, 0, n - 1, [l](int x) { return ((x % l) + l) % l; });
-    display<int, 0, n - 1>(array);
+    display < int, 0, n - 1 > (array);
 
     copyFromData();
     std::cout << "Using comparer:" << std::endl;
     bubbleSort<int>(array, 0, n - 1, [](int x, int y) { return std::abs(x) < std::abs(y); });
-    display<int, 0, n - 1>(array);
+    display < int, 0, n - 1 > (array);
 
     copyFromData();
     std::cout << "Using comparer:" << std::endl;
     bubbleSort<int>(array, 0, n - 1, [](int x, int y) { return std::abs(x) > std::abs(y); });
-    display<int, 0, n - 1>(array);
+    display < int, 0, n - 1 > (array);
 
     copyFromData();
     std::cout << "Using comparer:" << std::endl;
     bubbleSort<int>(
         array, 0, n - 1, [](int x, int y) { return std::to_string(x)[1] < std::to_string(y)[1]; });
-    display<int, 0, n - 1>(array);
+    display < int, 0, n - 1 > (array);
 
     copyFromData();
     std::cout << "Using std::sort:" << std::endl;
     std::sort(
         array, array + n, [](int x, int y) { return std::to_string(x)[1] > std::to_string(y)[1]; });
-    display<int, 0, n - 1>(array);
+    display < int, 0, n - 1 > (array);
     //-----------------------------
 
     constexpr double data1[] = {-34.5, 7.34, 12.2, -3.12, 0, 5, -100, 42, 9.1234};
@@ -92,16 +95,16 @@ int main()
     copyFromData1();
     bubbleSort<double, char, std::function<char(double)>>(
         array1, 0, n1 - 1, [](double x) { return std::to_string(x)[0]; });
-    display<double, 0, n1 - 1>(array1);
+    display < double, 0, n1 - 1 > (array1);
 
     copyFromData1();
     bubbleSort<double, std::string, std::function<std::string(double)>>(
         array1, 0, n1 - 1, [](double x) { return std::to_string(x) + "$"; });
-    display<double, 0, n1 - 1>(array1);
+    display < double, 0, n1 - 1 > (array1);
 
     copyFromData1();
     std::cout << "Using std::sort:" << std::endl;
     std::sort(array1, array1 + n1);
-    display<double, 0, n1 - 1>(array1);
+    display < double, 0, n1 - 1 > (array1);
     return 0;
 }

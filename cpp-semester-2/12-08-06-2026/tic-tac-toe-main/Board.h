@@ -3,46 +3,63 @@
 #include <iostream>
 #include <vector>
 
-class Board {
+class Board
+{
 public:
-    Board(int boardSize) : size(boardSize) {
-        if (size % 2 == 0) {
+    Board(int boardSize) : size(boardSize)
+    {
+        if (size % 2 == 0)
+        {
             throw std::invalid_argument("Board size must be odd number (3, 5, 7, ...)");
         }
         reset();
     }
-    void reset() {
+
+    void reset()
+    {
         grid.resize(size);
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++)
+        {
             grid[i].resize(size);
-            for (int j = 0; j < size; j++) {
+            for (int j = 0; j < size; j++)
+            {
                 grid[i][j] = ' ';
             }
         }
     }
 
-    bool isInside(int row, int col) const {
+    bool isInside(int row, int col) const
+    {
         return row >= 0 && row < size && col >= 0 && col < size;
     }
 
-    bool isCellEmpty(int row, int col) const {
+    bool isCellEmpty(int row, int col) const
+    {
         return grid[row][col] == ' ';
     }
-    int getSize() const {
+
+    int getSize() const
+    {
         return size;
     }
-    bool placeMark(int row, int col, char mark) {
+
+    bool placeMark(int row, int col, char mark)
+    {
         if (!isInside(row, col)) return false;
         if (!isCellEmpty(row, col)) return false;
         grid[row][col] = mark;
         return true;
     }
 
-    bool hasWinner(char mark) const {
-        for (int row = 0; row < size; row++) {
+    bool hasWinner(char mark) const
+    {
+        for (int row = 0; row < size; row++)
+        {
             bool win = true;
-            for (int col = 0; col < size; col++) {
-                if (grid[row][col] != mark) {
+            for (int col = 0; col < size; col++)
+            {
+                if (grid[row][col] != mark)
+                {
                     win = false;
                     break;
                 }
@@ -50,10 +67,13 @@ public:
             if (win) return true;
         }
 
-        for (int col = 0; col < size; col++) {
+        for (int col = 0; col < size; col++)
+        {
             bool win = true;
-            for (int row = 0; row < size; row++) {
-                if (grid[row][col] != mark) {
+            for (int row = 0; row < size; row++)
+            {
+                if (grid[row][col] != mark)
+                {
                     win = false;
                     break;
                 }
@@ -62,8 +82,10 @@ public:
         }
 
         bool win = true;
-        for (int i = 0; i < size; i++) {
-            if (grid[i][i] != mark) {
+        for (int i = 0; i < size; i++)
+        {
+            if (grid[i][i] != mark)
+            {
                 win = false;
                 break;
             }
@@ -71,8 +93,10 @@ public:
         if (win) return true;
 
         win = true;
-        for (int i = 0; i < size; i++) {
-            if (grid[i][size - 1 - i] != mark) {
+        for (int i = 0; i < size; i++)
+        {
+            if (grid[i][size - 1 - i] != mark)
+            {
                 win = false;
                 break;
             }
@@ -82,33 +106,42 @@ public:
         return false;
     }
 
-    bool isFull() const {
-        for (const auto& row : grid) {
-            for (char cell : row) {
+    bool isFull() const
+    {
+        for (const auto& row : grid)
+        {
+            for (char cell : row)
+            {
                 if (cell == ' ') return false;
             }
         }
         return true;
     }
 
-    void print() const {
+    void print() const
+    {
         std::cout << "\n  ";
-        for (int col = 0; col < size; col++) {
+        for (int col = 0; col < size; col++)
+        {
             std::cout << " " << col + 1 << "  ";
         }
         std::cout << "\n";
 
-        for (int row = 0; row < size; row++) {
-            if (row > 0) {
+        for (int row = 0; row < size; row++)
+        {
+            if (row > 0)
+            {
                 std::cout << "  ";
-                for (int col = 0; col < size; col++) {
+                for (int col = 0; col < size; col++)
+                {
                     std::cout << "---+";
                 }
                 std::cout << "\b \n";
             }
 
             std::cout << row + 1 << " ";
-            for (int col = 0; col < size; col++) {
+            for (int col = 0; col < size; col++)
+            {
                 std::cout << "| " << grid[row][col] << " ";
             }
             std::cout << "|\n";

@@ -7,13 +7,15 @@ bool insideZone(double, double);
 
 void testPoints();
 
-int main() {
+int main()
+{
     testPoints();
     return 0;
 }
 
 
-bool insideZone(double x, double y) {
+bool insideZone(double x, double y)
+{
     const double MIN_RADIUS{1};
     const double MAX_RADIUS{3};
 
@@ -27,7 +29,8 @@ bool insideZone(double x, double y) {
     return isCircle && isUpperHalf && isLeftHalf && isMoreThenMin_RADIUS;
 }
 
-void testPoints() {
+void testPoints()
+{
     cout << "Testing true" << endl;
 
     cout << "(-2.0, 1.5): " << boolalpha << insideZone(-2.0, 1.5) << endl;

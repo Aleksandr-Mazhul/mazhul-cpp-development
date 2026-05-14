@@ -18,7 +18,8 @@ void tests(int array[], int N);
 // bool isarrayOfArmstrongNumbers(int array[], int N);
 
 
-int main() {
+int main()
+{
     int array0[]{0, 1, 2, 5, 9};
     int N0 = 5;
 
@@ -39,21 +40,25 @@ int main() {
 }
 
 
-int power(int base, int exp) {
+int power(int base, int exp)
+{
     if (exp == 0) return 1;
     int result{1};
-    for (int i = 1; i <= exp; i++) {
+    for (int i = 1; i <= exp; i++)
+    {
         result = base * result;
     }
     return result;
 }
 
-int getCountOfDigit(int number) {
+int getCountOfDigit(int number)
+{
     int count = 0;
     if (number == 0)
         return 1;
 
-    while (number != 0) {
+    while (number != 0)
+    {
         count++;
         number /= 10;
     }
@@ -62,12 +67,14 @@ int getCountOfDigit(int number) {
 }
 
 
-int sumOfFigureIncludePow(int array[], int position) {
+int sumOfFigureIncludePow(int array[], int position)
+{
     int number = array[position];
     int figure = {0};
     int sum{0};
 
-    for (int i = 1; i <= getCountOfDigit(array[position]); i++) {
+    for (int i = 1; i <= getCountOfDigit(array[position]); i++)
+    {
         figure = number % 10;
         number /= 10;
         sum += power(figure, getCountOfDigit(number));
@@ -76,28 +83,33 @@ int sumOfFigureIncludePow(int array[], int position) {
 }
 
 
-bool isArmstrong(int array[], int N) {
-    
+bool isArmstrong(int array[], int N)
+{
 }
 
 
-int sumEllementsOfArray(int array[], int N) {
+int sumEllementsOfArray(int array[], int N)
+{
     int sum{0};
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++)
+    {
         sum += array[i];
     }
     return sum;
 }
 
 
-int sumOfArmstrongAumbers(int array[], int N) {
+int sumOfArmstrongAumbers(int array[], int N)
+{
     int sum{0};
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++)
+    {
         sum += sumOfFigureIncludePow(array, i);
     }
     return sum;
 }
 
-void tests(int array[], int N) {
+void tests(int array[], int N)
+{
     sumOfArmstrongAumbers(array, N) == 0 ? cout << "Passed" << endl : cout << endl;
 }

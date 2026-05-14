@@ -18,4 +18,4 @@ int* process(const int* src,
              const std::function<int(int)>& transform,
              int& outSize);
 
-void printArr (const int*arr, int size);
+void printArr(const int* arr, int size);
