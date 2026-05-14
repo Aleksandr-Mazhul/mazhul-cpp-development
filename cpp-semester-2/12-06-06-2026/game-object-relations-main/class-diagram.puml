@@ -1,0 +1,102 @@
+@startuml game_architecture
+title Game Architecture (C++)
+
+top to bottom direction
+
+skinparam classAttributeIconSize 0
+hide empty members
+hide circle
+
+skinparam shadowing false
+skinparam roundCorner 12
+skinparam dpi 160
+
+skinparam defaultFontName Inter
+skinparam defaultFontSize 13
+
+skinparam class {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  ArrowColor #0F172A
+  FontColor #0F172A
+  StereotypeFontColor #334155
+}
+
+skinparam note {
+  BackgroundColor #FFF7ED
+  BorderColor #C2410C
+  FontColor #7C2D12
+}
+
+skinparam legend {
+  BackgroundColor #F1F5F9
+  BorderColor #64748B
+  FontColor #0F172A
+}
+
+skinparam ArrowThickness 1
+skinparam linetype ortho
+
+class Game {
+  - levels: vector<unique_ptr<Level>>
+  + addLevel(level: unique_ptr<Level>): void
+  + levelsCount(): size_t
+}
+
+class Level {
+  - enemies: vector<unique_ptr<Enemy>>
+  + addEnemy(enemy: unique_ptr<Enemy>): void
+  + enemiesCount(): size_t
+}
+
+class Player {
+  - weapon: shared_ptr<Weapon>
+  - targetEnemy: Enemy*
+  + Player(weapon: shared_ptr<Weapon>)
+  + setTarget(enemy: Enemy*): void
+  + rewardKill(scoreManager: ScoreManager&, points: int): void
+  + getWeapon(): const Weapon&
+}
+
+class Enemy {
+  - weapon: shared_ptr<Weapon>
+  - playerToChase: Player*
+  + Enemy(weapon: shared_ptr<Weapon>, playerToChase: Player*)
+  + getWeapon(): const Weapon&
+}
+
+class Weapon {
+  - name: string
+  + getName(): const string&
+}
+
+class ScoreManager {
+  - totalScore: int
+  + addPoints(points: int): void
+  + getTotalScore(): int
+}
+
+' Composition
+Game *-[#1D4ED8]- "0..*" Level : owns
+Level *-[#1D4ED8]- "0..*" Enemy : owns
+
+' Shared weapon (aggregation / shared association)
+Player o-[#0F766E]- "1" Weapon : uses (shared_ptr)
+Enemy o-[#0F766E]- "1" Weapon : uses (shared_ptr)
+
+' Dependency (method parameter only)
+Player ..[#9333EA]> ScoreManager : depends on
+
+' Associations (non-owning pointers)
+Enemy -[#EA580C]-> "1" Player : chases
+Player -[#EA580C]-> "0..1" Enemy : targets
+
+legend right
+|= Цвет связи |= Значение |
+| #1D4ED8 | Композиция (composition) |
+| #0F766E | Агрегация / разделяемая связь |
+| #9333EA | Зависимость (dependency) |
+| #EA580C | Ассоциация (non-owning) |
+endlegend
+
+@enduml

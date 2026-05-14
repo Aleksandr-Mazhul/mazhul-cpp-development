@@ -1,0 +1,71 @@
+@startuml tictactoe_basic
+title Tic-Tac-Toe Architecture (Basic OOP)
+
+top to bottom direction
+
+skinparam classAttributeIconSize 0
+hide empty members
+hide circle
+
+skinparam shadowing false
+skinparam roundCorner 12
+skinparam dpi 160
+
+skinparam defaultFontName Inter
+skinparam defaultFontSize 13
+
+skinparam class {
+  BackgroundColor #F8FAFC
+  BorderColor #334155
+  ArrowColor #0F172A
+  FontColor #0F172A
+  StereotypeFontColor #334155
+}
+
+skinparam legend {
+  BackgroundColor #F1F5F9
+  BorderColor #64748B
+  FontColor #0F172A
+}
+
+skinparam ArrowThickness 1
+skinparam linetype ortho
+
+class Game {
+  - board: Board
+  - players: array<Player, 2>
+  + Game(first: Player, second: Player)
+  + run(): void
+  - readMove(player: const Player&): pair<int, int> const
+}
+
+class Board {
+  + size: int {static constexpr = 3}
+  - grid: array<array<char, 3>, 3>
+  + Board()
+  + reset(): void
+  + isInside(row: int, col: int): bool const
+  + isCellEmpty(row: int, col: int): bool const
+  + placeMark(row: int, col: int, mark: char): bool
+  + hasWinner(mark: char): bool const
+  + isFull(): bool const
+  + print(): void const
+}
+
+class Player {
+  - name: string
+  - mark: char
+  + Player(name: string, mark: char)
+  + getName(): const string& const
+  + getMark(): char const
+}
+
+Game *-[#1D4ED8]- "1" Board : owns
+Game *-[#1D4ED8]- "2" Player : owns
+
+legend right
+|= Цвет связи |= Значение |
+| #1D4ED8 | Композиция (composition) |
+endlegend
+
+@enduml
