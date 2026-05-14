@@ -41,8 +41,7 @@ std::string infixToPostfix(const std::string& expression)
         // число (многозначное)
         if (std::isdigit(static_cast<unsigned char>(ch)))
         {
-            while (i < expression.size() &&
-                   std::isdigit(static_cast<unsigned char>(expression[i])))
+            while (i < expression.size() && std::isdigit(static_cast<unsigned char>(expression[i])))
             {
                 output += expression[i];
                 ++i;
@@ -90,9 +89,8 @@ std::string infixToPostfix(const std::string& expression)
         // оператор
         if (isOperator(ch))
         {
-            while (!operators.empty() &&
-                   operators.top() != '(' &&
-                   priority(operators.top()) >= priority(ch))
+            while (!operators.empty() && operators.top() != '('
+                   && priority(operators.top()) >= priority(ch))
             {
                 output += operators.top();
                 output += ' ';
@@ -133,17 +131,14 @@ struct TestCase
 
 int main()
 {
-    std::vector<TestCase> tests =
-    {
-        {"(A + B) * (C - D) / E", "A B + C D - * E /"},
-        {"a + b * (c - d) / e + f", "a b c d - * e / + f +"},
-        {"x*y+z", "x y * z +"},
-        {"a+b*c", "a b c * +"},
-        {"(a+b)*(c-d)", "a b + c d - *"},
-        {"p/(q-r)*s+t", "p q r - / s * t +"},
-        {"10 + 25 * 3", "10 25 3 * +"},
-        {"100*(2+12)/14", "100 2 12 + * 14 /"}
-    };
+    std::vector<TestCase> tests = {{"(A + B) * (C - D) / E", "A B + C D - * E /"},
+                                   {"a + b * (c - d) / e + f", "a b c d - * e / + f +"},
+                                   {"x*y+z", "x y * z +"},
+                                   {"a+b*c", "a b c * +"},
+                                   {"(a+b)*(c-d)", "a b + c d - *"},
+                                   {"p/(q-r)*s+t", "p q r - / s * t +"},
+                                   {"10 + 25 * 3", "10 25 3 * +"},
+                                   {"100*(2+12)/14", "100 2 12 + * 14 /"}};
 
     for (const TestCase& test : tests)
     {
@@ -153,17 +148,11 @@ int main()
 
             if (result == test.expected)
             {
-                std::cout << "[OK]   "
-                          << test.infix
-                          << " -> "
-                          << result
-                          << '\n';
+                std::cout << "[OK]   " << test.infix << " -> " << result << '\n';
             }
             else
             {
-                std::cout << "[FAIL] "
-                          << test.infix
-                          << '\n';
+                std::cout << "[FAIL] " << test.infix << '\n';
 
                 std::cout << "  expected: " << test.expected << '\n';
                 std::cout << "  got:      " << result << '\n';
@@ -171,11 +160,7 @@ int main()
         }
         catch (const std::exception& e)
         {
-            std::cout << "[ERROR] "
-                      << test.infix
-                      << " : "
-                      << e.what()
-                      << '\n';
+            std::cout << "[ERROR] " << test.infix << " : " << e.what() << '\n';
         }
     }
 
